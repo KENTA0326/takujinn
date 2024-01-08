@@ -6,11 +6,19 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column h-100" style="margin: 0;">
+      <header class="wrapper" style="background-color: #60c1d9; height:100px;">
+        <%= render 'layouts/header' %>
+        <h1>卓人</h1>
+      </header>
+      <main class="flex-shrink-0">
+        <div class="pb-5">
+          <%= yield %>
+        </div>
+      </main>
   </body>
 </html>
