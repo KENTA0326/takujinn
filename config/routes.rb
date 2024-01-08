@@ -1,38 +1,36 @@
 Rails.application.routes.draw do
+  root to: "public/homes#top"
+
   namespace :admin do
-    get 'posts/index'
-    get 'posts/show'
+     #resources :sessions, only: [:new, :create, :destroy]
+     resources :users, only: [:show, :edit, :update, :index, :destroy] do
+       resource :relationships, only: [:create, :destroy]
+        	get "followings" => "relationships#followings", as: "followings"
+        	get "followers" => "relationships#followers", as: "followers"
+     end
+     resources :posts, only: [:index, :show]
+     get "search" => "searches#search"
   end
-  namespace :admin do
-    get 'search/search'
+
+  resources :posts, only: [:index, :show, :create, :new, :destroy] do
+   resource :favorites, only: [:create, :destroy]
+   resources :post_comments, only: [:create, :destroy]
+   resource :bookmarks, only: [:index, :create, :destroy]
   end
-  namespace :admin do
-    get 'user/index'
-    get 'user/show'
-    get 'user/edit'
+
+  resources :registrations, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
+  get "search" => "searches#search"
+
+  resources :users, only: [:index, :show, :edit, :update] do
+  patch '/users/withdraw' => 'users#withdraw'
+  get '/users/unsbscribe', to: 'users#unsubscribe', as: 'users_unsubscribe'
+  resource :relationships, only: [:create, :destroy]
+        	get "followings" => "relationships#followings", as: "followings"
+        	get "followers" => "relationships#followers", as: "followers"
+  post "user/guest_sign_in", to: "sessions#guest_sign_in"
   end
-  namespace :public do
-    get 'search/search'
-  end
-  namespace :public do
-    get 'bookmarks/index'
-  end
-  namespace :public do
-    get 'user/show'
-    get 'user/edit'
-    get 'user/confirm'
-  end
-  namespace :public do
-    get 'favorites/index'
-  end
-  namespace :public do
-    get 'posts/index'
-    get 'posts/new'
-    get 'posts/show'
-  end
-  namespace :public do
-    get 'homes/top'
-  end
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
