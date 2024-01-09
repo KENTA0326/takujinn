@@ -8,6 +8,8 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "popper.js";
+import "bootstrap";
 import '../stylesheets/application.scss';
 import Swiper from 'swiper/swiper-bundle.js';  //この行を追記
 import 'swiper/swiper-bundle.css';
