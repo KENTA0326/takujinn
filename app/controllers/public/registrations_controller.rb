@@ -4,6 +4,13 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+
+  # def new
+  #   build_resource({})
+  #   self.resource = resource_class.new(sign_up_params)
+  #   yield resource if block_given?
+  #   respond_with resource
+  # end
   # GET /resource/sign_up
   # def new
   #   super
