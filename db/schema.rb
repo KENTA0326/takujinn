@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2024_01_09_120418) do
   end
 
   create_table "posts", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.text "text"
     t.string "location"
     t.string "btype"

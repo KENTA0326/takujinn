@@ -1,0 +1,41 @@
+<div class="container">
+  
+    <h1 class="text-center">My Page</h1>
+ 
+  <div class="row">
+    <div class="col-5">
+      <table class="table">
+        <tr>
+          <td>ユーザーネーム</td>
+          <td><%= current_user.name %></td>
+        </tr>
+        <tr>
+          <td>経験年数</td>
+          <td><%= current_user.year %></td>
+        </tr>
+        <tr>
+          <td>戦型</td>
+          <td><%= current_user.btype %></td>
+        </tr>
+        <!--<tr>-->
+        <!--  <td>自己紹介</td>-->
+        <!--  <td><%#= current_user.introduction %></td>-->
+        <!--</tr>-->
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= current_user.addresses %></td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td><%= current_user.telephone %></td>
+        </tr>
+        <tr>
+          <% if @user.email != "guest@example.com" %>
+          <td><%= link_to "ユーザー編集", edit_user_path(current_user), class: "btn btn-success text-white" %></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>

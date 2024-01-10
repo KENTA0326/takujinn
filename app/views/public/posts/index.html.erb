@@ -14,12 +14,13 @@
      <tr>
        <td>
          <%= link_to post_path(post) do %>
-         <%= @user.name %>
+         <%= post.user.name %>
          <% end %>
        </td>
        <td><%= post.btype %></td>
        <td><%= post.location %></td>
        <td><%= post.text %></td>
+       <td><%= render "public/favorites/btn", post: post %></td>
      </tr>
      <% end %>
    </tbody>
