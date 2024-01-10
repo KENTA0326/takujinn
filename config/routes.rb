@@ -30,16 +30,17 @@ Rails.application.routes.draw do
     end
 
     get "search" => "searches#search"
-
-    resources :users, only: [:index, :show, :edit, :update] do
+    devise_scope :user do
+     resources :users, only: [:index, :show, :edit, :update] do
       patch '/users/withdraw' => 'users#withdraw'
       get '/users/unsbscribe', to: 'users#unsubscribe', as: 'users_unsubscribe'
       resource :relationships, only: [:create, :destroy]
         get "followings" => "relationships#followings", as: "followings"
         get "followers" => "relationships#followers", as: "followers"
-      post "user/guest_sign_in", to: "sessions#guest_sign_in"
-  end
-  end
 
+     end
+   end
+     post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+    end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
