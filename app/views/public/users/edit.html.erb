@@ -1,2 +1,47 @@
-<h1>Public::User#edit</h1>
-<p>Find me in app/views/public/user/edit.html.erb</p>
+<div class="py-5 px-5">
+      <%= form_with model: @user, url: user_path, method: :patch do |f| %>
+      <%#= render "public/shared/error_messages", resource: resource %>
+<h1>ユーザー編集</h1>
+      <table class="table">
+        <tr>
+          <td><%= f.label :name, "ユーザーネーム" %></td>
+          <td></td>
+          <td>
+            <%= f.text_field :name, autofocus: true, class: "name", placeholder:"ユーザーネーム" %>
+          </td>
+        </tr>
+　　 <tr>
+          <td><%= f.label :year, "経験年数" %></td>
+          <td></td>
+          <td>
+            <div class="field">
+              <%= f.text_field :year, autofocus: true, class: "year", placeholder:"00年" %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label :btype, "戦型" %></td>
+          <td></td>
+          <td>
+            <div class="field">
+              <%= f.text_field :btype, autofocus: true, class: "btype", placeholder:"カットマン" %>
+            </div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td><%= f.label :telephone, "電話番号(ハイフンなし)" %></td>
+          <td></td>
+          <td>
+            <div class="field">
+              <%= f.text_field :telephone, autofocus: true, class: "telephone", placeholder:"0000000000" %>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="actions text-center">
+        <%= f.submit "編集する", class: "btn btn-success text-white" %>
+      </div>
+      <% end %>
+    </div>
