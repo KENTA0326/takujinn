@@ -3,7 +3,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
     create_table :posts do |t|
       t.text :text
       t.string :location
-      t.string :type
+      t.string :btype
       t.timestamps
     end
   end

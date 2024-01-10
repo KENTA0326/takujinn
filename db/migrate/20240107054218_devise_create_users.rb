@@ -13,7 +13,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :name
       t.text :introduction
       t.integer :year
-      t.integer :type
+      t.integer :btype
       t.text :addresses
       t.integer :telephone
       t.integer :password

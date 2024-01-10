@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2024_01_09_120418) do
   create_table "posts", force: :cascade do |t|
     t.text "text"
     t.string "location"
-    t.string "type"
+    t.string "btype"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2024_01_09_120418) do
     t.string "name"
     t.text "introduction"
     t.integer "year"
-    t.integer "type"
+    t.integer "btype"
     t.text "addresses"
     t.integer "telephone"
     t.datetime "remember_created_at"

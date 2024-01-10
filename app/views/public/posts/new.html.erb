@@ -1,2 +1,50 @@
-<h1>Public::Posts#new</h1>
-<p>Find me in app/views/public/posts/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="title">
+      <h2>投稿</h2>
+    </div>
+  </div>
+  <div>
+     <%= form_with model: @post do |f| %>
+    <table class="table">
+     <tr>
+       <td>
+        <%= f.label :btype, "打ちたい戦型" %>
+       </td>
+       <td></td>
+       <td>
+         <div class="field">
+           <%= f.text_field :btype, autofocus: true, class: "btype" ,placeholder:"カットマン" %>
+         </div>
+       </td>
+     </tr>
+     <tr>
+       <td>
+        <%= f.label :location, "場所" %>
+       </td>
+       <td></td>
+       <td>
+         <div class="field">
+           <%= f.text_field :location, autofocus: true, class: "location" ,placeholder:"東京都新宿区" %>
+         </div>
+       </td>
+     </tr>
+     <tr>
+       <td>
+        <%= f.label :text, "一言" %>
+       </td>
+       <td></td>
+       <td>
+         <div class="field">
+           <%= f.text_field :text, autofocus: true, class: "text" ,placeholder:"久々にやりたい！" %>
+         </div>
+       </td>
+     </tr>
+   </table>
+   <div class="text-center">
+     <%= f.submit "投稿する", class: "btn btn-sm btn-success" %>
+    	<% end %>
+   </div>
+  </div>
+
+</div>
