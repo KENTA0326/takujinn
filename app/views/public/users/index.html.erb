@@ -1,7 +1,7 @@
 <div class="container">
-  
-    <h1 class="text-center">My Page</h1>
- 
+  <div class="row">
+    <h1>My Page</h1>
+    </div>
   <div class="row">
     <div class="col-5">
       <table class="table">
@@ -17,10 +17,10 @@
           <td>戦型</td>
           <td><%= current_user.btype %></td>
         </tr>
-        <!--<tr>-->
-        <!--  <td>自己紹介</td>-->
-        <!--  <td><%#= current_user.introduction %></td>-->
-        <!--</tr>-->
+        <tr>
+          <td>経験年数</td>
+          <td><%= current_user.year %></td>
+        </tr>
         <tr>
           <td>メールアドレス</td>
           <td><%= current_user.addresses %></td>
@@ -30,9 +30,16 @@
           <td><%= current_user.telephone %></td>
         </tr>
         <tr>
-          <% if @user.email != "guest@example.com" %>
+          <td>フォロー</td>
+          <td><%= link_to current_user.followings.count, user_followings_path(current_user) %></td>
+        </tr>
+        <tr>
+          <td>フォロワー</td>
+          <td><%= link_to current_user.followers.count, user_followers_path(current_user) %></td>
+        </tr>
+        <tr>
           <td><%= link_to "ユーザー編集", edit_user_path(current_user), class: "btn btn-success text-white" %></td>
-          <% end %>
+
         </tr>
       </table>
     </div>

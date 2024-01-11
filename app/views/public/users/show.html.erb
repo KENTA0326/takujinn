@@ -1,2 +1,77 @@
-<h1>Public::User#show</h1>
-<p>Find me in app/views/public/user/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <h2>ユーザーの情報</h2>
+      <table class="table">
+        <tr>
+          <td>ユーザーネーム</td>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td>経験年数</td>
+          <td><%= @user.year %></td>
+        </tr>
+        <tr>
+          <td>戦型</td>
+          <td><%= @user.btype %></td>
+        </tr>
+        <!--<tr>-->
+        <!--  <td>自己紹介</td>-->
+        <!--  <td><%#= current_user.introduction %></td>-->
+        <!--</tr>-->
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= @user.addresses %></td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td><%= @user.telephone %></td>
+        </tr>
+        <tr>
+          <td>フォロー</td>
+          <td><%= link_to @user.followings.count, user_followings_path(@user) %></td>
+        </tr>
+        <tr>
+          <td>フォロワー</td>
+          <td><%= link_to @user.followers.count, user_followers_path(@user) %></td>
+        </tr>
+        <tr>
+          <% if current_user != @user %>
+            <td><%= render "public/relationships/btn", user: @user, options: { class: ""} %></td>
+          <% else %>
+            <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+              <i class="fas fa-user-cog"></i>
+            <% end %>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="col-5">
+      <table class="table">
+        <thead>
+          <%= @user.name %>の投稿
+        </thead>
+
+        <tbody>
+         <tr>
+              <td class="table-warning">打ちたい戦型</td>
+              <td><%= @post.btype %></td>
+            </tr>
+
+            <tr>
+              <td class="table-warning">場所</td>
+              <td><%= @post.location %></td>
+            </tr>
+
+            <tr>
+              <td class="table-warning">一言</td>
+              <td><%= @post.text %></td>
+            </tr>
+        </tbody>
+
+
+      </table>
+    </div>
+  </div>
+</div>

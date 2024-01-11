@@ -1,5 +1,5 @@
 <div class="py-5 px-5">
-      <%= form_with model: @user, url: user_path, method: :patch do |f| %>
+      <%= form_with model:@user, url:user_path, method: :patch do |f| %>
       <%#= render "public/shared/error_messages", resource: resource %>
 <h1>ユーザー編集</h1>
       <table class="table">
@@ -41,7 +41,7 @@
         </tr>
       </table>
       <div class="actions text-center">
-        <%= f.submit "編集する", class: "btn btn-success text-white" %>
+        <%= f.submit "更新する", class: "btn btn-success text-white" %>
       </div>
       <% end %>
     </div>

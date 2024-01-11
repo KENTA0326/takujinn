@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+
   def index
     @posts = Post.all
   end
@@ -15,6 +16,9 @@ class Public::PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
+    @post_comment = PostComment.new
+    @post_comments = PostComment.all
   end
 
   private
