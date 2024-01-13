@@ -37,10 +37,11 @@
           <td>フォロワー</td>
           <td><%= link_to current_user.followers.count, user_followers_path(current_user) %></td>
         </tr>
+        <% if @user.email != "guest@example.com" %>
         <tr>
           <td><%= link_to "ユーザー編集", edit_user_path(current_user), class: "btn btn-success text-white" %></td>
-
         </tr>
+        <% end %>
       </table>
     </div>
 

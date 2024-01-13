@@ -14,6 +14,9 @@ import '../stylesheets/application.scss';
 import Swiper from 'swiper/swiper-bundle.js';  //この行を追記
 import 'swiper/swiper-bundle.css';
 //この行を追記
+//= require jquery
+//= require rails-ujs
+
 
 Rails.start()
 Turbolinks.start()
