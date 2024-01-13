@@ -20,7 +20,7 @@
        <td><%= post.btype %></td>
        <td><%= post.location %></td>
        <td><%= post.text %></td>
-       <td><%= render "public/favorites/btn", post: post %></td>
+       <td id='favorite_buttons_<%= post.id %>'><%= render "public/favorites/btn", post: post %></td>
      </tr>
      <% end %>
    </tbody>
