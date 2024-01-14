@@ -27,12 +27,12 @@
     </div>
     <div class="col-6">
       <h2>コメント</h2>
-       <div class="text-center pt-3">
+       <div  id="post-comments" class="text-center pt-3">
               <%= render "public/post_comments/index", post: @post %>
             </div>
           </div>
           <aside id="subA">
-            <div class="boxA">
+            <div id="comment-form" class="boxA" >
               <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
             </div>
     </div>
