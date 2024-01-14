@@ -12,7 +12,7 @@
         <% if post_comment.user == current_user %>
         <div class="title9">
           <div class="title10">
-            <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-sm " %>
+            <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete,remote:true, data: {"turbolinks" => false}, data: {confirm: "本当に削除しますか？"}, class: "btn btn-sm " %>
           </div>
         </div>
         <% end %>
