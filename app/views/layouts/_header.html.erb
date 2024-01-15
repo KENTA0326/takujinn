@@ -31,17 +31,14 @@
               <% if user_signed_in? && current_user.present? %>
               <% end %>
             <li class="nav-item">
-              <a href="#">
               <%= link_to "ユーザー一覧", admin_users_path%>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#">
               <%= link_to "投稿履歴一覧", admin_posts_path%>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete%>
              </a>
             </li>

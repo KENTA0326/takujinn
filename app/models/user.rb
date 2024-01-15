@@ -34,6 +34,10 @@ class User < ApplicationRecord
   # 指定したユーザーをフォローしているかどうかを判定
   def following?(user)
     followings.include?(user)
+  end 
+  
+  def active_for_authentication?
+    super && (is_active == true)
   end
 
   GUEST_USER_EMAIL = "guest@example.com"
