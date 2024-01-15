@@ -4,7 +4,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-
   # def new
   #   build_resource({})
   #   self.resource = resource_class.new(sign_up_params)
@@ -66,4 +65,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :year, :btype, :introduction, :addresses, :telephone)
+  end
 end

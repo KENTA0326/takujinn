@@ -42,6 +42,7 @@
       </table>
       <div class="actions text-center">
         <%= f.submit "更新する", class: "btn btn-success text-white" %>
+        <%= link_to "退会する", user_users_unsubscribe_path(@user), class: "btn btn-danger text-white" %>
       </div>
       <% end %>
     </div>

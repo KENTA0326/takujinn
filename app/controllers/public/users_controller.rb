@@ -20,6 +20,21 @@ class Public::UsersController < ApplicationController
   def confirm
   end
 
+  def create
+    @user = User.new(user_params)
+    p "aaaaaaaaaaa"
+    p user_params
+
+    if @user.save
+      # ユーザーが正常に作成された場合の処理
+      redirect_to users_path, notice: 'ユーザーが正常に作成されました。'
+    else
+      # ユーザーの作成に失敗した場合の処理
+      render :new
+    end
+  end
+
+
   def update
     if current_user.update(user_params)
       flash[:notice] = '変更が保存されました。'
@@ -28,6 +43,19 @@ class Public::UsersController < ApplicationController
       flash.now[:alert] = "変更に失敗しました。"
       render edit_user_path(current_user)
     end
+  end
+
+  def unsubscribe
+    @user = current_user
+  end
+
+  def withdraw
+    @user = current_user
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @user.update(is_active: false)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
 
   private
