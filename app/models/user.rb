@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy 
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
   
     # ...
   # フォローしている関連付け
