@@ -1,2 +1,27 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <table class="table">
+        <tbody>
+            <tr>
+              <td class="table-warning">ユーザーネーム</td>
+              <td><%= link_to @post.user.name, admin_user_path(@post.user) %></td>
+            </tr>
+
+            <tr >
+              <td class="table-warning">打ちたい戦型</td>
+              <td><%= @post.btype %></td>
+            </tr>
+
+            <tr>
+              <td class="table-warning">場所</td>
+              <td><%= @post.location %></td>
+            </tr>
+
+            <tr>
+              <td class="table-warning">一言</td>
+              <td><%= @post.text %></td>
+            </tr>
+          </tbody>
+      </table>
+    </div>

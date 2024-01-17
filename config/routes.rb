@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -27,6 +26,14 @@ Rails.application.routes.draw do
      resource :favorites, only: [:create, :destroy]
      resources :post_comments, only: [:create, :destroy]
      resource :bookmarks, only: [:index, :create, :destroy]
+    end 
+    
+    resources :contacts, only: [:new, :create] do
+      collection do
+          post 'confirm'
+          post 'back'
+          get 'done'
+      end
     end
 
     get "search" => "searches#search"
