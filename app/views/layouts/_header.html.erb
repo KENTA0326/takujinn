@@ -7,29 +7,30 @@
           <ul>
            <% if user_signed_in? %>
              <li class="nav-item">
-               
+
               <%= link_to "マイページ", users_path %>
 
              </li>
 
              <li class="nav-item">
-               
+
               <%= link_to "新規投稿", new_post_path %>
-              
+
              </li>
              <li class="nav-item">
-               
+
               <%= link_to "投稿一覧", posts_path%>
-               
+
              </li>
+             <li class="nav-item">
+              <%= link_to "お問い合わせ", new_contact_path %>
+            </li>
             <li class="nav-item">
-              
+
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete%>
-              
+
             </li>
             <% elsif admin_signed_in? %>
-              <% if user_signed_in? && current_user.present? %>
-              <% end %>
             <li class="nav-item">
               <%= link_to "ユーザー一覧", admin_users_path%>
               </a>

@@ -4,6 +4,6 @@ class Admin::PostsController < ApplicationController
   end
 
   def show
-    @posts = Post.all
+    @post = Post.find(params[:id])
   end
 end

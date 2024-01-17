@@ -1,2 +1,64 @@
-<h1>Admin::User#edit</h1>
-<p>Find me in app/views/admin/user/edit.html.erb</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 text-center pt-5">
+      <div class="titleG">
+        <h1><%= @user.name %>さんのユーザー情報編集</h1>
+      </div>
+    </div>
+  </div>
+  <%= form_with model: [:admin, @user], url: admin_user_path(@user.id), method: :patch do |f| %>
+    <div class="row justify-content-center">
+      <div class="col-3 form-group mt-5 text-center">
+        <p>
+          ユーザーID
+        </p>
+      </div>
+      <div class="col-5 form-group mt-5 ">
+        <%= @user.id %>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3 form-group mt-5 text-center">
+        <p>
+          ユーザー名
+        </p>
+      </div>
+      <div class="col-5 form-group mt-5 ">
+        <%= f.text_field :name %>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3 form-group mt-5 text-center">
+        <p>
+          メールアドレス
+        </p>
+      </div>
+      <div class="col-5 form-group mt-5 ">
+          <%= f.text_field :email %>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3 form-group mt-5 ">
+        <p>
+          ユーザーステータス
+        </p>
+      </div>
+      <div class="col-5 form-group mt-5 ">
+        <%= f.radio_button :is_active, false %>
+        <%= f.label :is_active, "退会" %>
+
+        <%= f.radio_button :is_active, true %>
+        <%= f.label :is_active, "有効" %>
+      </div>
+    </div>
+    <div class="form-row justify-content-center">
+      <div class="col-5 form-group mt-5">
+        <div class="title7">
+          <div class="title8">
+            <%= f.submit "変更", class: "btn form-control" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
