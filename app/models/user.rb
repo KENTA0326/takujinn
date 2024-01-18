@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy 
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
+  has_many :notifications, dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   
     # ...
   # フォローしている関連付け
@@ -22,6 +25,22 @@ class User < ApplicationRecord
   
   # フォロワーを取得
   has_many :followers, through: :passive_relationships, source: :follower
+  
+  # フォロー通知を作成するメソッド
+  def create_notification_follow!(current_user)
+    # すでにフォロー通知が存在するか検索
+
+    existing_notification = Notification.find_by(visitor_id: current_user.id, visited_id: self.id, action: 'follow')
+
+    # フォロー通知が存在しない場合のみ、通知レコードを作成
+    if existing_notification.blank?
+      notification = current_user.active_notifications.build(
+        visited_id: self.id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
   
   # 指定したユーザーをフォローする
   def follow(user)

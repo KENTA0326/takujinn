@@ -26,8 +26,16 @@ Rails.application.routes.draw do
      resource :favorites, only: [:create, :destroy]
      resources :post_comments, only: [:create, :destroy]
      resource :bookmarks, only: [:index, :create, :destroy]
-    end 
+    end
+
+    # resources :notifications, only: [:index, :update] do
+    #   patch :mark_as_read, on: :collection
+    # end 
     
+    resources :notifications, only: [:index] do
+      post :update_checked, on: :collection
+    end
+
     resources :contacts, only: [:new, :create] do
       collection do
           post 'confirm'
@@ -47,10 +55,10 @@ Rails.application.routes.draw do
         get "followings" => "relationships#followings", as: "followings"
         get "followers" => "relationships#followers", as: "followers"
 
-     end 
+     end
      post "users/guest_sign_in", to: "sessions#guest_sign_in"
     end
-    
+
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

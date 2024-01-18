@@ -25,6 +25,21 @@
              <li class="nav-item">
               <%= link_to "お問い合わせ", new_contact_path %>
             </li>
+             </li>
+            <li class="nav-item">
+              <% notifications_count = Notification.where(visited_id: current_user.id, checked: false).count %>
+              <% if notifications_count > 0 %>
+                <span class="mother-bell">
+                  <i class="fa-sharp fa-solid fa-bell"></i>
+                  <span class="notification-circle">
+                    <%= notifications_count > 9 ? '9+' : notifications_count %>
+                  </span>
+                </span>
+              <% else %>
+                <i class="fa-sharp fa-solid fa-bell"></i>
+              <% end %>
+              <%= link_to "Notifications", notifications_path %>
+            </li>
             <li class="nav-item">
 
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete%>
