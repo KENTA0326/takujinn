@@ -30,8 +30,8 @@ Rails.application.routes.draw do
 
     # resources :notifications, only: [:index, :update] do
     #   patch :mark_as_read, on: :collection
-    # end 
-    
+    # end
+
     resources :notifications, only: [:index] do
       post :update_checked, on: :collection
     end
