@@ -6,6 +6,8 @@ class Public::PostCommentsController < ApplicationController
       @post_comment.post_id = @post.id
       @post_comment.save
       # redirect_to post_path(@post)
+      # コメントの投稿に対する通知を作成・保存
+      @post.create_notification_comment!(current_user, @post_comment.id)
     end
 
     def destroy
