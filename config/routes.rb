@@ -49,6 +49,9 @@ Rails.application.routes.draw do
       resources :messages, only: [:create]
       resources :rooms, only: [:create,:show]
      resources :users, only: [:index, :show, :edit, :update] do
+       member do
+         get :favorites
+       end
       patch '/users/withdraw' => 'users#withdraw'
       get '/users/unsbscribe', to: 'users#unsubscribe', as: 'users_unsubscribe'
       resource :relationships, only: [:create, :destroy]

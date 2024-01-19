@@ -3,8 +3,8 @@
     <div class="col-5">
       <table class="table">
         <tbody>
-            <tr>
-              <td class="table-warning">ユーザーネーム</td>
+            <tr class="borger-radius:100px;">
+              <td class="table-warning"  style="borger-radius:100px;">ユーザーネーム</td>
               <td><%= link_to @post.user.name, user_path(@post.user) %></td>
             </tr>
 
@@ -24,17 +24,16 @@
             </tr>
           </tbody>
       </table>
+       <aside id="subA">
+         <div id="comment-form" class="boxA" >
+           <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+    </div>
     </div>
     <div class="col-6">
-      <h2>コメント</h2>
+      <h2 class="text-center pt-3">コメント</h2>
        <div id="post-comments" class="text-center pt-3">
               <%= render "public/post_comments/index", post: @post %>
-            </div>
-          </div>
-          <aside id="subA">
-            <div id="comment-form" class="boxA" >
-              <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
-            </div>
+       </div>
     </div>
   </div>
 </div>
