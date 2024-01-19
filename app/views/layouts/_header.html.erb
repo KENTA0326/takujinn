@@ -1,6 +1,6 @@
-  <h1 class="text-center">
-       卓人
-     </h1>
+  <h1 class="logo__title text-center p-3">
+      卓人
+    </h1>
    <div id="navArea" style="background-color: #60c1d9;" >
       <nav>
         <div class="inner">
@@ -21,6 +21,9 @@
 
               <%= link_to "投稿一覧", posts_path%>
 
+             </li>
+             <li class="nav-item">
+                <%= link_to "いいねした投稿一覧", favorites_user_path(current_user) %>
              </li>
              <li class="nav-item">
               <%= link_to "お問い合わせ", new_contact_path %>

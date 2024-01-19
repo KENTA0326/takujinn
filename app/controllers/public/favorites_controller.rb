@@ -20,4 +20,6 @@ class Public::FavoritesController < ApplicationController
     # redirect_to request.referer#非同期のため削除
   end
 
+
+
 end

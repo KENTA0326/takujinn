@@ -1,4 +1,6 @@
 @use '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&family=Shippori+Mincho+B1:wght@800&display=swap');
+
 
 /*============
 hanbarger
@@ -225,3 +227,7 @@ body {
   font-weight: 400;
 }
 
+.logo__title {
+ font-family: 'Shippori Mincho B1', serif;
+ color: #fff; 
+}
