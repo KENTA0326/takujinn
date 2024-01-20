@@ -1,0 +1,23 @@
+.profile-detail > div {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.profile-detail  dt {
+    background-color: #6dbec8;
+    border-radius: 5px;
+    border-bottom-right-radius: 0;
+    color: #fff;
+    vertical-align: middle;
+    padding: 1em 2em;
+    text-align: center;
+    white-space: nowrap;
+    width: 180px;
+}
+
+.profile-detail  dd {
+    border-bottom: 1px solid #6dbec8;
+    padding: 1em;
+    margin-bottom: 0px;
+    width: 350px;
+}
