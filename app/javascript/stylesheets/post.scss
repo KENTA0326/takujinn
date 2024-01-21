@@ -1,0 +1,74 @@
+.post-edit-user-button {
+  background-color: #2dd787;
+    color: white;
+    display: inline-block;
+    padding: 0.5em 2em;
+    text-align: center;
+    text-shadow: rgba(0,0,0,0.4) 0px 3px 8px;
+    text-decoration: none !important;
+    border-radius: 5px;
+    font-size: 1rem;
+    // left: 100%;
+    // transform: translateX(-100%);
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.post-edit-user-button::after {
+    content: '';
+    
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0.4;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 100%;
+    padding-top: 100%;
+    transition: all 0.5s cubic-bezier(0, 0, 0.2, 1);
+    z-index: -1
+}
+
+.post-edit-user-button:hover::after {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.1
+}
+
+.post-destroy-user-button {
+  background-color: #ff0000;
+    color: white;
+    display: inline-block;
+    padding: 0.5em 2em;
+    text-align: center;
+    text-shadow: rgba(0,0,0,0.4) 0px 3px 8px;
+    text-decoration: none !important;
+    border-radius: 5px;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.post-destroy-user-button::after {
+    content: '';
+    color: white;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0.4;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 100%;
+    padding-top: 100%;
+    transition: all 0.5s cubic-bezier(0, 0, 0.2, 1);
+    z-index: -1
+}
+
+.post-destroy-user-button:hover::after {
+    color: white;
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.1
+}
