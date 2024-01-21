@@ -12,7 +12,7 @@
     padding: 1em 2em;
     text-align: center;
     white-space: nowrap;
-    width: 180px;
+    width: 250px;
 }
 
 .profile-detail  dd {
@@ -21,3 +21,59 @@
     margin-bottom: 0px;
     width: 350px;
 }
+
+.heading {
+    font-weight: normal;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    padding: 0.25em 0.5em;
+}
+
+.heading-1 {
+    border-left: 6px solid #6dbec8;
+    border-bottom: 1px solid #6dbec8;
+    font-size: 2rem;
+}
+
+.profile-edit-user-button {
+    background-color: #2dd787;
+    color: white !important;
+    display: inline-block;
+    padding: 0.5em 2em;
+    text-align: center;
+    text-shadow: rgba(0,0,0,0.4) 0px 3px 8px;
+    text-decoration: none !important;
+    border-radius: 5px;
+    font-size: 1rem;
+    left: 100%;
+    transform: translateX(-100%);
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+// .profile__edit-user-button:hover{
+//     opacity: 0.7;
+// }
+
+.profile-edit-user-button::after {
+    content: '';
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0.4;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 100%;
+    padding-top: 100%;
+    transition: all 0.5s cubic-bezier(0, 0, 0.2, 1);
+    z-index: -1
+}
+
+.profile-edit-user-button:hover::after {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.1
+}
+
+

@@ -1,50 +1,38 @@
-<div class="container">
-  <div class="row">
-    <div class="title">
-      <h2>投稿</h2>
-    </div>
-  </div>
-  <div>
+ <h2 class="heading heading-1">新規投稿</h2>
+
+  <div class="d-flex justify-content-center p-5">
      <%= form_with model: @post do |f| %>
-    <table class="table">
-     <tr>
-       <td>
+    <dl class="profile-detail">
+      <div>
+        <dt>
         <%= f.label :btype, "打ちたい戦型" %>
-       </td>
-       <td></td>
-       <td>
-         <div class="field">
-           <%= f.text_field :btype, autofocus: true, class: "btype" ,placeholder:"カットマン" %>
-         </div>
-       </td>
-     </tr>
-     <tr>
-       <td>
-        <%= f.label :location, "場所" %>
-       </td>
-       <td></td>
-       <td>
-         <div class="field">
-           <%= f.text_field :location, autofocus: true, class: "location" ,placeholder:"東京都新宿区" %>
-         </div>
-       </td>
-     </tr>
-     <tr>
-       <td>
-        <%= f.label :text, "一言" %>
-       </td>
-       <td></td>
-       <td>
-         <div class="field">
-           <%= f.text_field :text, autofocus: true, class: "text" ,placeholder:"久々にやりたい！" %>
-         </div>
-       </td>
-     </tr>
-   </table>
-   <div class="text-center">
-     <%= f.submit "投稿する", class: "btn btn-sm btn-success" %>
-    	<% end %>
-   </div>
+       </dt>
+       <dd>
+        <%= f.text_field :btype, autofocus: true, class: "btype" ,placeholder:"カットマン" %>
+        </dd>
+       </div>
+       <div>
+         <dt>
+           <%= f.label :location, "場所" %>
+         </dt>
+        <dd>
+          <%= f.text_field :location, class: "location" ,placeholder:"東京都新宿区" %>
+        </dd>
+       </div>
+      <div>
+        <dt>
+          <%= f.label :text, "一言" %>
+        </dt>
+        <dd>
+           <%= f.text_field :text, class: "text" ,placeholder:"久々にやりたい！" %>
+        </dd>
+      </div>
+    </dl>
+    <div class="text-center">
+      <%= f.submit "投稿する", class: "btn post-edit-user-button" %>
+    </div>
+
+  <% end %>
   </div>
 
-</div>
+
