@@ -1,32 +1,7 @@
 <h2 class="heading heading-1">投稿一覧</h2>
-<div class="publish-list__item d-flex">
+
   <% @posts.each do |post| %>
-   <div class=" m-2">
-    <div class="d-flex mx-3">
-     <dt>ユーザーネーム</dt>
-     <dd>
-       <%= link_to post_path(post) do %>
-       <%= post.user.name %>
-       <% end %>
-     </dd>
-    </div>
-    <div class="d-flex mx-3">
-     <dt>打ちたい戦型</dt>
-     <dd><%= post.btype %></dd>
-    </div>
-    <div class="d-flex mx-3">
-     <dt>場所</dt>
-     <dd><%= post.location %></dd>
-    </div>
-    <div class="d-flex mx-3">
-     <dt>一言</dt>
-     <dd><%= post.text %></dd>
-    </div>
-    <div id='favorite_buttons_<%= post.id %>'><%= render "public/favorites/btn", post: post %></div>
-   </div>
-  <% end %>
-  <% @posts.each do |post| %>
-  <div class="card" style="width: 18rem;">
+  <div class="card card-post">
   <div class="card-body">
     <h5 class="card-title">
      <%= link_to post_path(post) do %>
@@ -34,22 +9,28 @@
        <% end %>
      </h5>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">
-     <span>打ちたい戦型</span>
-     <span><%= post.btype %></span>
+  <ul class="list-group-flush" style="padding-left: 0px;">
+    <li class="post-detail-group">
+     <div class="d-flex">
+      <dt class="post-detail1">打ちたい戦型</dt>
+      <dd class="post-detail2"><%= post.btype %></dd>
+     </div>
     </li>
-    <li class="list-group-item">
-     <span>場所</span>
-     <span><%= post.location %></span>
+    <li class="post-detail-group">
+     <div class="d-flex">
+      <dt class="post-detail1">場所</dt>
+      <dd class="post-detail2"><%= post.location %></dd>
+     </div>
     </li>
-    <li class="list-group-item">
-     <span>一言</span>
-     <span><%= post.text %></span>
+    <li class="post-detail-group">
+     <div class="d-flex">
+      <dt class="post-detail1">一言</dt>
+      <dd class="post-detail2"><%= post.text %></dd>
+     </div>
     </li>
   </ul>
   <div class="card-body">
-   <div id='favorite_buttons_<%= post.id %>'><%= render "public/favorites/btn", post: post %></div> 
+   <div id='favorite_buttons_<%= post.id %>' class="text-right"><%= render "public/favorites/btn", post: post %></div>
   </div>
 </div>
   <% end %>
