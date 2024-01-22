@@ -1,50 +1,51 @@
+<h2 class="heading heading-1"><%= @user.name %>の情報</h2>
 <div class="container">
   <div class="row">
     <div class="col-5">
-      <h2>ユーザーの情報</h2>
-      <table class="table">
-        <tr>
-          <td>ユーザーネーム</td>
-          <td><%= @user.name %></td>
-        </tr>
-        <tr>
-          <td>経験年数</td>
-          <td><%= @user.year %></td>
-        </tr>
-        <tr>
-          <td>戦型</td>
-          <td><%= @user.btype %></td>
-        </tr>
+      <h2 class="header3"><%= @user.name %>の詳細</h2>
+     <div class="post-detail">
+        <div class="d-flex mx-3">
+          <dt>ユーザーネーム</dt>
+          <dd><%= @user.name %></dd>
+        </div>
+        <div class="d-flex mx-3">
+          <dt>経験年数</dt>
+          <dd><%= @user.year %></dd>
+        </div>
+        <div class="d-flex mx-3">
+          <dt>戦型</dt>
+          <dd><%= @user.btype %></dd>
+        </div>
         <!--<tr>-->
         <!--  <td>自己紹介</td>-->
         <!--  <td><%#= current_user.introduction %></td>-->
         <!--</tr>-->
-        <tr>
-          <td>メールアドレス</td>
-          <td><%= @user.addresses %></td>
-        </tr>
-        <tr>
-          <td>電話番号</td>
-          <td><%= @user.telephone %></td>
-        </tr>
-        <tr>
-          <td>フォロー</td>
-          <td><%= link_to @user.followings.count, user_followings_path(@user) %></td>
-        </tr>
-        <tr>
-          <td>フォロワー</td>
-          <td><%= link_to @user.followers.count, user_followers_path(@user) %></td>
-        </tr>
-        <tr>
+        <div class="d-flex mx-3">
+          <dt>メールアドレス</dt>
+          <dd><%= @user.addresses %></dd>
+        </div>
+        <div class="d-flex mx-3">
+          <dt>電話番号</dt>
+          <dd><%= @user.telephone %></dd>
+        </div>
+       <div class="d-flex mx-3">
+          <dt>フォロー</dt>
+          <dd><%= link_to @user.followings.count, user_followings_path(@user) %></dd>
+        </div>
+       <div class="d-flex mx-3">
+          <dt>フォロワー</dt>
+          <dd><%= link_to @user.followers.count, user_followers_path(@user) %></dd>
+        </div>
+        <div>
           <% if current_user != @user %>
-            <td><%= render "public/relationships/btn", user: @user, options: { class: ""} %></td>
+            <%= render "public/relationships/btn", user: @user, options: { class: ""} %>
           <% else %>
             <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
               <i class="fas fa-user-cog"></i>
             <% end %>
           <% end %>
-        </tr>
-        <tr>
+        </div>
+        <div>
           <% unless @user.id == current_user.id %>
             <% if (current_user.following? @user) && (@user.following? current_user)  %>
             <% if @isRoom == true %>
@@ -59,10 +60,10 @@
             <% end %>
             <% end %>
           <% end %>
-        </tr>
-      </table>
+        </div>
     </div>
-    
+    </div>
+
     <div class="col-5">
       <table class="table">
         <thead>
