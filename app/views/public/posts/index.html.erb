@@ -25,6 +25,33 @@
     <div id='favorite_buttons_<%= post.id %>'><%= render "public/favorites/btn", post: post %></div>
    </div>
   <% end %>
- <div>
+  <% @posts.each do |post| %>
+  <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">
+     <%= link_to post_path(post) do %>
+       <%= post.user.name %>
+       <% end %>
+     </h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+     <span>打ちたい戦型</span>
+     <span><%= post.btype %></span>
+    </li>
+    <li class="list-group-item">
+     <span>場所</span>
+     <span><%= post.location %></span>
+    </li>
+    <li class="list-group-item">
+     <span>一言</span>
+     <span><%= post.text %></span>
+    </li>
+  </ul>
+  <div class="card-body">
+   <div id='favorite_buttons_<%= post.id %>'><%= render "public/favorites/btn", post: post %></div> 
+  </div>
+</div>
+  <% end %>
 
 
