@@ -141,7 +141,7 @@ display: flex;
 
 .header3 {
  border-bottom: 1px solid #6dbec8;
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
 }
 
 .comment-box {
@@ -149,4 +149,41 @@ display: flex;
     border-radius: 5px;
     justify-self: baseline;
     padding: 1.25em;
+}
+
+.card-post{
+  display: inline-block;
+  margin: 10px 0;
+  width: 30%;
+  border-radius: 50px;
+}
+
+.comment-header{
+  background-color: #fff;
+}
+
+.post-detail1{
+  background-color: #6dbec8;
+    border-radius: 5px;
+    border-bottom-right-radius: 0;
+    color: #fff;
+    vertical-align: middle;
+    padding: 1em 2em;
+    text-align: center;
+    white-space: nowrap;
+    width: 50%;
+}
+
+.post-detail2{
+  border-bottom: 1px solid #6dbec8;
+    padding: 1em;
+    margin-bottom: 0px;
+    width: 50%;
+}
+
+.post-detail-group {
+  position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    background-color: #fff;
 }
