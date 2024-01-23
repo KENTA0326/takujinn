@@ -36,7 +36,8 @@
           <dt>フォロワー</dt>
           <dd><%= link_to @user.followers.count, user_followers_path(@user) %></dd>
         </div>
-        <div>
+      <div class="d-flex">
+        <div style="margin :10px 10px;">
           <% if current_user != @user %>
             <%= render "public/relationships/btn", user: @user, options: { class: ""} %>
           <% else %>
@@ -45,11 +46,11 @@
             <% end %>
           <% end %>
         </div>
-        <div>
+        <div style="margin :10px 10px;">
           <% unless @user.id == current_user.id %>
             <% if (current_user.following? @user) && (@user.following? current_user)  %>
             <% if @isRoom == true %>
-              <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
+              <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg post-edit-user-button">チャットへ</a>
             <% else %>
               <%= form_for @room do |f| %>
                 <%= fields_for @entry do |e| %>
@@ -61,37 +62,50 @@
             <% end %>
           <% end %>
         </div>
+      </div>
+        
     </div>
     </div>
 
     <div class="col-5">
-      <table class="table">
-        <thead>
+     <h2 class="header3">
           <%= @user.name %>の投稿
-        </thead>
-
-        <tbody>
+     </h2>
           <!-- user no toukou ichiran  -->
-          <% @user.posts.each do |post| %>
-            <tr>
-              <td class="table-warning">打ちたい戦型</td>
-              <td><%= post.btype %></td>
-            </tr>
-
-            <tr>
-              <td class="table-warning">場所</td>
-              <td><%= post.location %></td>
-            </tr>
-
-            <tr>
-              <td class="table-warning">一言</td>
-              <td><%= post.text %></td>
-            </tr>
-          <% end %>
-        </tbody>
-
-
-      </table>
+<% @user.posts.each do |post| %>
+<div class="card card-user-post">
+  <div class="card-body">
+    <h5 class="card-title">
+     <%= link_to post_path(post) do %>
+       <%= post.user.name %>
+       <% end %>
+     </h5>
+  </div>
+  <ul class="list-group-flush" style="padding-left: 0px;">
+    <li class="post-detail-group">
+     <div class="d-flex">
+      <dt class="post-detail1">打ちたい戦型</dt>
+      <dd class="post-detail2"><%= post.btype %></dd>
+     </div>
+    </li>
+    <li class="post-detail-group">
+     <div class="d-flex">
+      <dt class="post-detail1">場所</dt>
+      <dd class="post-detail2"><%= post.location %></dd>
+     </div>
+    </li>
+    <li class="post-detail-group">
+     <div class="d-flex">
+      <dt class="post-detail1">一言</dt>
+      <dd class="post-detail2"><%= post.text %></dd>
+     </div>
+    </li>
+  </ul>
+  <div class="card-body">
+   <div id='favorite_buttons_<%= post.id %>' class="text-right"><%= render "public/favorites/btn", post: post %></div>
+  </div>
+</div>
+<% end %>
     </div>
   </div>
 </div>

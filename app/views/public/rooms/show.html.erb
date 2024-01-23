@@ -1,21 +1,43 @@
 <% @entries.each do |e| %>
   <% if @myUserId != e.user.id %>
-      <h2><%= e.user.name %>さんとのトークルーム</h2>
+      <h2 class="heading heading-1"><%= e.user.name %>さんとのトークルーム</h2>
     </div>
   <% end %>
 <% end %>
 <%= link_to "投稿一覧に戻る", posts_path %>
+<div class="line-bc"><!--①LINE会話全体を囲う-->
+
+  <!--②左コメント始-->
 
    <% if @messages.present? %>
      <% @messages.each do |m| %>
-       <% @myUserId == m.user.id  %>
-       <p><%= m.user.name %></p>
+       <% if @myUserId == m.user.id  %>
+       <p style="text-align: right;"><%= m.user.name %></p>
+       <div class="balloon6">
+        <div class="chatting">
+       <div class="mycomment">
+
          <p><%= m.message %></p>
+       </div>
+       </div>
+       </div>
+       <% else %>
+       <p style="text-align: left;"><%= m.user.name %></p>
+       <div class="says">
+
+       <p><%= m.message %></p>
+       </div>
+       <% end %>
      <% end %>
    <% end %>
-   
+</div>
+</div>
+</div>
+
 <%= form_for @message do |f| %>
    <%= f.text_field :message, placeholder: "メッセージを入力して下さい" , size: 50, class:"form-text-field" %>
       <%= f.hidden_field :room_id, value: @room.id %>
         <%= f.submit "投稿",class: 'form-submit'%>
  <% end %>
+
+ 

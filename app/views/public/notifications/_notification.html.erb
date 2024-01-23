@@ -2,14 +2,9 @@
   <% visitor = notification.visitor %>
   <% visited = notification.visited %>
   <div class="col-md-12 mx-auto notification-container">
-    <div class="notification-box d-flex align-items-center">
-      <div class="notification-icon">
-        <%= link_to user_path(visitor.id), data: { turbolinks: false } do %>
-        <h2><%= visitor.name %></h2>
-        <% end %>
-      </div>
-
-      <!-- 通知の種類に応じて表示内容を切り替え -->
+    <div class="notification-box align-items-center">
+      <div class="box16">
+       <p><!-- 通知の種類に応じて表示内容を切り替え -->
       <% case notification.action when 'follow' then %>
 
       <!-- フォロー通知の場合 -->
@@ -45,8 +40,8 @@
             <% end %>
           </span>
         <% end %>
-      <% end %>
-
+      <% end %></p>
+      </div>
     </div>
     <div class="small text-muted text-right">
       <%= time_ago_in_words(notification.created_at).upcase %>前

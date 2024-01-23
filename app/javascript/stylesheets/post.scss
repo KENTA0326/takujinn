@@ -187,3 +187,112 @@ display: flex;
     padding: 0.75rem 1.25rem;
     background-color: #fff;
 }
+
+.card-user-post {
+  display: inline-block;
+  margin: 10px 0;
+  width: 100%;
+  border-radius: 50px;
+}
+
+.box16{
+    position: relative;
+    background: #dff0d8;
+    box-shadow: 0px 0px 0px 5px #dff0d8;
+    border: dashed 2px white;
+    padding: 0.2em 0.5em;
+    color: #454545;
+}
+
+.box16:after{
+    position: absolute;
+    content: '';
+    right: -7px;
+    top: -7px;
+    border-width: 0 15px 15px 0;
+    border-style: solid;
+    border-color: #ffdb88 #fff #ffdb88;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.box15 p {
+    margin: 0;
+    padding: 0;
+}
+
+
+// DM機能
+
+/*以下、①背景色など*/
+.line-bc {
+  padding: 20px 10px;
+  width: 100%;
+  margin: 15px auto;
+  text-align: left;
+  font-size: 14px;
+  background: #6dbec8;
+
+}
+
+/*以下、②左側のコメント*/
+.balloon6 {
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.balloon6 .chatting {
+  width: 100%;
+  text-align: right;
+}
+.says {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 50px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #edf1ee;
+}
+
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+.says p {
+  margin: 0;
+  padding: 0;
+}
+
+/*以下、③右側の緑コメント*/
+.mycomment {
+  margin: 10px 0;
+}
+.mycomment p {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #30e852;
+  font-size: 15px;
+}
+
+.mycomment p:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #30e852;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
