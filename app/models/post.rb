@@ -4,6 +4,7 @@ class Post < ApplicationRecord
  has_many :favorites, dependent: :destroy
  has_many :notifications, as: :notifiable, dependent: :destroy #追記  :
  has_many :post_comments, dependent: :destroy
+ has_one_attached :image
  after_create do
     user.followers.each do |follower|
       notifications.create(user_id: follower.id)
