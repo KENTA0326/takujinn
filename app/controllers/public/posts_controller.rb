@@ -1,7 +1,12 @@
 class Public::PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    if params[:q].present?
+      @q = Post.ransack(params[:q])
+      @posts = @q.result(distinct: true)
+    else
+      @posts = Post.all
+    end
   end
 
   def new
@@ -19,7 +24,9 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @post_comments = PostComment.all
-  end
+  end 
+  
+  
 
   private
 

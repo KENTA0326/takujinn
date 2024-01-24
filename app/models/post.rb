@@ -11,6 +11,14 @@ class Post < ApplicationRecord
     end
   end
 
+ def self.ransackable_attributes(auth_object = nil)
+   %w[ btype location]
+ end
+
+ def self.ransackable_associations(auth_object = nil)
+   []
+ end
+
  def favorited_by?(user)
    favorites.exists?(user_id: user.id)
  end

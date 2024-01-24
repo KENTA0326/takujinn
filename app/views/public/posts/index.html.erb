@@ -1,5 +1,9 @@
-<h2 class="heading heading-1">投稿一覧</h2>
+<h2 class="heading heading-1" style="margin-bottom:90px;">投稿一覧</h2>
+<h3 class="header3" style="margin:30px 0;">検索</h3>
 
+ <%= render 'search-form' %>
+
+<h3 class="header3" style="margin:40px 0;">投稿</h3>
   <% @posts.each do |post| %>
   <div class="card card-post">
   <div class="card-body">

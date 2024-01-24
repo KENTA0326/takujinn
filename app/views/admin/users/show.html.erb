@@ -1,45 +1,91 @@
+<h2 class="heading heading-1"><%= @user.name %>さんのユーザー詳細</h2>
 <div class="container">
-  <div class="row d-flex justify-content-center">
-    <div class="col">
-        <div class="col-6 text-center mb-5 mt-3">
-          <div class="titleD">
-            <h4>
-              <%= @user.name %>さんのユーザー詳細
-            </h4>
-          </div>
+  <div class="row">
+    <div class="col-5">
+      <h2 class="header3"><%= @user.name %>の詳細</h2>
+     <div class="post-detail">
+        <div class="d-flex mx-3">
+          <dt>ユーザーネーム</dt>
+          <dd><%= @user.name %></dd>
         </div>
-        <div class="row d-flex justify-content-center">
-          <div class="col-12 d-flex align-items-center pl-5">
-            <table class="table table-borderless" style="color: #48120E;">
-              <tr>
-                <th>ユーザーID</td>
-                <td><%= @user.id %></td>
-              </tr>
-              <tr>
-                <th>氏名</td>
-                <td><%= @user.name %></td>
-              </tr>
-              <tr>
-                <th>メールアドレス</th>
-                <td><%= @user.email %></td>
-              </tr>
-              <tr>
-                <th>会員ステータス</th>
-                <th><%= @user.is_active %></th>
-              </tr>
-              <tr>
-                <td></td>
-                <td class="d-flex justify-content-end">
-                  <div class="title7">
-                    <div class="title8">
-                      <%= link_to "編集する", edit_admin_user_path, class:"btn" %>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </div>
+        <div class="d-flex mx-3">
+          <dt>経験年数</dt>
+          <dd><%= @user.year %></dd>
         </div>
+        <div class="d-flex mx-3">
+          <dt>戦型</dt>
+          <dd><%= @user.btype %></dd>
+        </div>
+        <!--<tr>-->
+        <!--  <td>自己紹介</td>-->
+        <!--  <td><%#= current_user.introduction %></td>-->
+        <!--</tr>-->
+        <div class="d-flex mx-3">
+          <dt>メールアドレス</dt>
+          <dd><%= @user.email %></dd>
+        </div>
+        <div class="d-flex mx-3">
+          <dt>電話番号</dt>
+          <dd><%= @user.telephone %></dd>
+        </div>
+        <div class="d-flex mx-3">
+          <dt>会員ステータス</dt>
+          <dd><%= @user.is_active %></dd>
+        </div>
+       <div class="d-flex mx-3">
+          <dt>フォロー</dt>
+          <dd><%= link_to @user.followings.count, user_followings_path(@user) %></dd>
+        </div>
+       <div class="d-flex mx-3">
+          <dt>フォロワー</dt>
+          <dd><%= link_to @user.followers.count, user_followers_path(@user) %></dd>
+        </div>
+      <div class="d-flex">
+        <div style="margin :10px 10px;">
+          <%= link_to "編集する", edit_admin_user_path, class:"profile-edit-user-button" %>
+        </div>
+
+      </div>
+
+    </div>
+    </div>
+
+    <div class="col-5">
+     <h2 class="header3">
+          <%= @user.name %>の投稿
+     </h2>
+          <!-- user no toukou ichiran  -->
+<% @user.posts.each do |post| %>
+<div class="card card-user-post">
+  <div class="card-body">
+    <h5 class="card-title">
+     <%= link_to post_path(post) do %>
+       <%= post.user.name %>
+       <% end %>
+     </h5>
+  </div>
+  <ul class="list-group-flush" style="padding-left: 0px;">
+    <li class="post-detail-group">
+     <div class="d-flex">
+      <dt class="post-detail1">打ちたい戦型</dt>
+      <dd class="post-detail2"><%= post.btype %></dd>
+     </div>
+    </li>
+    <li class="post-detail-group">
+     <div class="d-flex">
+      <dt class="post-detail1">場所</dt>
+      <dd class="post-detail2"><%= post.location %></dd>
+     </div>
+    </li>
+    <li class="post-detail-group">
+     <div class="d-flex">
+      <dt class="post-detail1">一言</dt>
+      <dd class="post-detail2"><%= post.text %></dd>
+     </div>
+    </li>
+  </ul>
+</div>
+<% end %>
     </div>
   </div>
 </div>

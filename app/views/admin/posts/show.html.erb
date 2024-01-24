@@ -1,27 +1,31 @@
+<h2 class="heading heading-1">投稿詳細</h2>
 <div class="container">
   <div class="row">
     <div class="col-5">
-      <table class="table">
-        <tbody>
-            <tr>
-              <td class="table-warning">ユーザーネーム</td>
-              <td><%= link_to @post.user.name, admin_user_path(@post.user) %></td>
-            </tr>
-
-            <tr >
-              <td class="table-warning">打ちたい戦型</td>
-              <td><%= @post.btype %></td>
-            </tr>
-
-            <tr>
-              <td class="table-warning">場所</td>
-              <td><%= @post.location %></td>
-            </tr>
-
-            <tr>
-              <td class="table-warning">一言</td>
-              <td><%= @post.text %></td>
-            </tr>
-          </tbody>
-      </table>
+      <div class="post-detail">
+        <div class="d-flex mx-3">
+          <dt>ユーザーネーム</dt>
+          <dd><%= link_to @post.user.name, admin_user_path(@post.user) %></dd>
+        </div>
+        <div class="d-flex mx-3">
+         <dt>打ちたい戦型</dt>
+         <dd><%= @post.btype %></dd>
+        </div>
+        <div class="d-flex mx-3">
+          <dt>場所</dt>
+          <dd><%= @post.location %></dd>
+        </div>
+        <div class="d-flex mx-3">
+          <dt>一言</dt>
+          <dd><%= @post.text %></dd>
+        </div>
+      </div>
     </div>
+    <div class="col-6">
+      <h3 class="header3">コメント</h3>
+       <div id="post-comments">
+              <%= render "public/post_comments/index", post: @post %>
+    </div>
+    </div>
+  </div>
+</div>
