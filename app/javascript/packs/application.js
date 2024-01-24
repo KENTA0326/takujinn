@@ -17,6 +17,8 @@ import 'swiper/swiper-bundle.css';
 //= require jquery
 //= require rails-ujs
 
+import '../features/accordion' //里親募集掲載の検索フォームのアコーディオン機能
+
 
 Rails.start()
 Turbolinks.start()

@@ -1,64 +1,48 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12 text-center pt-5">
-      <div class="titleG">
-        <h1><%= @user.name %>さんのユーザー情報編集</h1>
-      </div>
-    </div>
-  </div>
+<h2 class="heading heading-1"><%= @user.name %>さんのユーザー情報編集</h2>
+  <div class="d-flex justify-content-center">
   <%= form_with model: [:admin, @user], url: admin_user_path(@user.id), method: :patch do |f| %>
-    <div class="row justify-content-center">
-      <div class="col-3 form-group mt-5 text-center">
-        <p>
+
+<dl class="profile-detail p-5">
+     <div>
+        <dt>
           ユーザーID
-        </p>
-      </div>
-      <div class="col-5 form-group mt-5 ">
-        <%= @user.id %>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-3 form-group mt-5 text-center">
-        <p>
+        </dt>
+       <dd>
+          <%= @user.id %>
+       </dd>
+     </div>
+　　 <div>
+         <dt>
           ユーザー名
-        </p>
+         </dt>
+        <dd>
+          <%= f.text_field :name %>
+        </dd>
+       </div>
+      <div>
+        <dt>
+         メールアドレス
+        </dt>
+        <dd>
+           <%= f.text_field :email %>
+        </dd>
       </div>
-      <div class="col-5 form-group mt-5 ">
-        <%= f.text_field :name %>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-3 form-group mt-5 text-center">
-        <p>
-          メールアドレス
-        </p>
-      </div>
-      <div class="col-5 form-group mt-5 ">
-          <%= f.text_field :email %>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-3 form-group mt-5 ">
-        <p>
-          ユーザーステータス
-        </p>
-      </div>
-      <div class="col-5 form-group mt-5 ">
-        <%= f.radio_button :is_active, false %>
+        <div>
+          <dt>
+            ユーザーステータス
+          </dt>
+          <dd>
+            <%= f.radio_button :is_active, false %>
         <%= f.label :is_active, "退会" %>
 
         <%= f.radio_button :is_active, true %>
         <%= f.label :is_active, "有効" %>
-      </div>
-    </div>
-    <div class="form-row justify-content-center">
-      <div class="col-5 form-group mt-5">
-        <div class="title7">
-          <div class="title8">
-            <%= f.submit "変更", class: "btn form-control" %>
-          </div>
+          </dd>
         </div>
+      </dl>
+
+      <div class="text-center">
+        <%= f.submit "更新する", class: "btn post-edit-user-button" %>
       </div>
+      <% end %>
     </div>
-  <% end %>
-</div>

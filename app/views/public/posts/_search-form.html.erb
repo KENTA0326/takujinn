@@ -1,0 +1,28 @@
+<div class="posts-search">
+ <div id="accordion" class="post-search-action">
+  <div id="accordion-head" class="post-search__accordion-head">
+   <p>
+    <i class="fa-solid fa-magnifying-glass"></i>
+    検索フォームを<span id="accordion-open-or-close-text">開く</span>
+   </p>
+   <span id="accordion-icon">
+    <i class="fa-solid fa-circle-chevron-left"></i>
+   </span>
+  </div>
+  <div id="accordion-body" style="display: none;">
+   <%= search_form_for @q do |f| %>
+    <div>
+      <div style="margin:20px 30px;">
+        <%= f.label :btype_cont, '戦型'%>
+        <%= f.search_field :btype_cont %>
+      </div>
+      <div style="margin:20px 30px;">
+         <%= f.label :location_cont, '場所' %>
+         <%= f.search_field :location_cont %>
+      </div>
+      <%= f.submit'検索', class: 'btn post-search-user-button'  %>
+    </div>
+   <% end %>
+  </div>
+ </div>
+</div>
