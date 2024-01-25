@@ -1,8 +1,8 @@
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('turbolinks:load', () => {
   // アコーディオン要素
   const accordion = document.querySelector('#accordion');
   if (!accordion) return; //ページ内に要素がなければ処理を終了
-  
+
   // アコーディオンのヘッダー要素
   accordion.head = document.querySelector('#accordion-head');
   // 「開く」or「閉じる」の要素
@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // アコーディオンの開閉
   function toggleAccordion() {
     this.openOrCloseText.innerText = this.openOrCloseText.innerText === '開く' ? '閉じる' : '開く';
-    
+
     this.icon.classList.toggle('js-down');
     this.body.classList.toggle('js-open');
     if (this.body.style.display == "none") {
@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
      }else {
      this.body.style.display = "none"
     }
-    
-    
+
+
 ;  }
 });

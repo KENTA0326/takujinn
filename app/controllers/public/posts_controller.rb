@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :set_search
 
   def index
     if params[:q].present?
@@ -26,7 +27,10 @@ class Public::PostsController < ApplicationController
     @post_comments = PostComment.all
   end 
   
-  
+  def set_search
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).order(created_at: :desc)
+  end #
 
   private
 

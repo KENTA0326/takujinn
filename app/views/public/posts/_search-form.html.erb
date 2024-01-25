@@ -11,14 +11,22 @@
   </div>
   <div id="accordion-body" style="display: none;">
    <%= search_form_for @q do |f| %>
-    <div>
+    <div class="search-body">
       <div style="margin:20px 30px;">
-        <%= f.label :btype_cont, '戦型'%>
-        <%= f.search_field :btype_cont %>
+        <div>
+         <%= f.label :btype_cont, '戦型'%>
+        </div>
+        <div>
+         <%= f.search_field :btype_cont %>
+        </div>
       </div>
       <div style="margin:20px 30px;">
+        <div>
          <%= f.label :location_cont, '場所' %>
+        </div>
+        <div>
          <%= f.search_field :location_cont %>
+        </div>
       </div>
       <%= f.submit'検索', class: 'btn post-search-user-button'  %>
     </div>
