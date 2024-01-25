@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
-  before_action :set_search
+  # before_action :set_search
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
-  def set_search
-    @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).order(created_at: :desc)
-  end 
+
+  # def set_search
+  #   @q = Post.ransack(params[:q])
+  #   @posts = @q.result(distinct: true).order(created_at: :desc)
+  #   @users = @q.result(distinct: true).order(created_at: :desc)
+  # end #
 
   def after_sign_in_path_for(resource)
     root_path

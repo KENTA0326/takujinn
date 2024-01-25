@@ -1,0 +1,5 @@
+<%= search_form_for @q do |f| %>
+　<%= f.label :name_cont, 'ユーザーネーム'%>
+　<%= f.search_field :name_cont %>
+　<%= f.submit'検索', class: 'btn post-search-user-button'  %>
+<% end %>

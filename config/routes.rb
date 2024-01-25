@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     end
 
     get "search" => "searches#search"
+    get "mypage" => "users#mypage", as: 'users_mypage'
     devise_scope :user do
       resources :messages, only: [:create]
       resources :rooms, only: [:create,:show]

@@ -1,6 +1,16 @@
 class Public::UsersController < ApplicationController
+  before_action :set_search
   before_action :ensure_guest_user, only: [:edit]
   def index
+    if params[:q].present?
+      @q = User.ransack(params[:q])
+      @users = @q.result(distinct: true)
+    else
+    @users = User.all
+    end
+  end 
+  
+  def mypage
     @user = current_user
   end
 
@@ -79,6 +89,11 @@ class Public::UsersController < ApplicationController
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
+  end
+
+  def set_search
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).order(created_at: :desc)
   end
 
   private

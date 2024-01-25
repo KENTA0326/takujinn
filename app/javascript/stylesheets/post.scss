@@ -299,7 +299,7 @@ display: flex;
 
 .posts-search {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 300px;
 }
 
 .post-search-action{
@@ -337,12 +337,14 @@ display: flex;
     color: white;
     display: inline-block;
     padding: 0.5em 2em;
-    text-align: center;
     text-shadow: rgba(0,0,0,0.4) 0px 3px 8px;
     text-decoration: none;
     border-radius: 30px;
-    font-size: 1.2rem;
     position: relative;
     overflow: hidden;
     z-index: 0;
+}
+
+.search-body{
+   text-align: center;
 }

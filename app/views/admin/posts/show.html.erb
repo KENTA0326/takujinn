@@ -24,8 +24,22 @@
     <div class="col-6">
       <h3 class="header3">コメント</h3>
        <div id="post-comments">
-              <%= render "public/post_comments/index", post: @post %>
-    </div>
+        <% @post.post_comments.each do |post_comment| %>
+            <div class="card" style="margin:10px 10px;">
+              <div class="card-header comment-header">
+                <%= link_to admin_user_path(post_comment.user) do %>
+                  <%= post_comment.user.name %>
+                <% end %>
+              </div>
+              <div class="card-body comment-box">
+              <%= post_comment.comment %>
+                <% if post_comment.user == current_user %>
+                <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete,remote:true, data: {"turbolinks" => false}, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger" %>
+               <% end %>
+              </div>
+            </div>
+        <% end %>
+       </div>
     </div>
   </div>
 </div>

@@ -13,6 +13,14 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
+  def self.ransackable_attributes(auth_object = nil)
+        %w[name]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+        %w[name]
+  end
+
     # ...
   # フォローしている関連付け
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
