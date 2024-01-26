@@ -12,14 +12,10 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+  has_many :reporter, class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
+  has_many :reported, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
 
-  def self.ransackable_attributes(auth_object = nil)
-        %w[name]
-  end
-
-  def self.ransackable_associations(auth_object = nil)
-        %w[name]
-  end
+  
 
     # ...
   # フォローしている関連付け
@@ -33,6 +29,16 @@ class User < ApplicationRecord
 
   # フォロワーを取得
   has_many :followers, through: :passive_relationships, source: :follower
+  
+  enum status: { available: 0, suspended: 1 }
+  
+  def self.ransackable_attributes(auth_object = nil)
+        %w[name]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+        %w[name]
+  end
 
   # フォロー通知を作成するメソッド
   def create_notification_follow!(current_user)
@@ -66,7 +72,7 @@ class User < ApplicationRecord
   end
 
   def active_for_authentication?
-    super && (is_active == true)
+    super && (user_status == 0)
   end
 
   GUEST_USER_EMAIL = "guest@example.com"

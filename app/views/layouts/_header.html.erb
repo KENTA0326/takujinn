@@ -1,98 +1,96 @@
-  <h1 class="logo__title text-center p-3">
-      卓人
-    </h1>
-   <div id="navArea" style="background-color: #60c1d9;" >
-      <nav>
-        <div class="inner">
-          <ul>
-           <% if user_signed_in? %>
-             <li class="nav-item">
+<h1 class="text-center p-3">
+  <%= link_to "卓人", root_path, class: "logo__title" %>
+</h1>
 
-              <%= link_to "マイページ", users_mypage_path %>
+<div id="navArea" style="background-color: #60c1d9;">
+  <nav>
+    <div class="inner">
+      <ul>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "マイページ", users_mypage_path %>
+          </li>
 
-             </li>
+          <li class="nav-item">
+            <%= link_to "新規投稿", new_post_path %>
+          </li>
 
-             <li class="nav-item">
+          <li class="nav-item">
+            <%= link_to "投稿一覧", posts_path %>
+          </li>
 
-              <%= link_to "新規投稿", new_post_path %>
+          <li class="nav-item">
+            <%= link_to "ユーザー一覧", users_path %>
+          </li>
 
-             </li>
-             <li class="nav-item">
+          <li class="nav-item">
+            <%= link_to "いいねした投稿一覧", favorites_user_path(current_user) %>
+          </li>
 
-              <%= link_to "投稿一覧", posts_path%>
+          <li class="nav-item">
+            <%= link_to "お問い合わせ", new_contact_path %>
+          </li>
 
-             </li>
-             <li class="nav-item">
-
-              <%= link_to "ユーザー一覧", users_path%>
-
-             </li>
-             <li class="nav-item">
-                <%= link_to "いいねした投稿一覧", favorites_user_path(current_user) %>
-             </li>
-             <li class="nav-item">
-              <%= link_to "お問い合わせ", new_contact_path %>
-            </li>
-             </li>
-            <li class="nav-item">
-              <% notifications_count = Notification.where(visited_id: current_user.id, checked: false).count %>
-              <% if notifications_count > 0 %>
-                <span class="mother-bell">
-                  <i class="fa-sharp fa-solid fa-bell"></i>
-                  <span class="notification-circle">
-                    <%= notifications_count > 9 ? '9+' : notifications_count %>
-                  </span>
-                </span>
-              <% else %>
+          <li class="nav-item">
+            <% notifications_count = Notification.where(visited_id: current_user.id, checked: false).count %>
+            <% if notifications_count > 0 %>
+              <span class="mother-bell">
                 <i class="fa-sharp fa-solid fa-bell"></i>
-              <% end %>
-              <%= link_to "Notifications", notifications_path %>
-            </li>
-            <li class="nav-item">
-
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete%>
-
-            </li>
-            <% elsif admin_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "ユーザー一覧", admin_users_path%>
-              </a>
-            </li>
-            <li class="nav-item">
-              <%= link_to "投稿履歴一覧", admin_posts_path%>
-              </a>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete%>
-             </a>
-            </li>
+                <span class="notification-circle">
+                  <%= notifications_count > 9 ? '9+' : notifications_count %>
+                </span>
+              </span>
             <% else %>
+              <i class="fa-sharp fa-solid fa-bell"></i>
+            <% end %>
+            <%= link_to "Notifications", notifications_path %>
+          </li>
 
-            <li class="nav-item"><%= link_to "新規登録", new_user_registration_path %></li>
-            <li class="nav-item"><%= link_to "ログイン", new_user_session_path %></li>
-          </ul>
-        </div>
-      </nav>
-      <% end %>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "ユーザー一覧", admin_users_path %>
+          </li>
 
-      <div class="toggle_btn">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+          <li class="nav-item">
+            <%= link_to "投稿履歴一覧", admin_posts_path %>
+          </li>
+          
+           <li class="nav-item">
+            <%= link_to "通報一覧", admin_reports_path %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li class="nav-item"><%= link_to "新規登録", new_user_registration_path %></li>
+          <li class="nav-item"><%= link_to "ログイン", new_user_session_path %></li>
+        <% end %>
+      </ul>
     </div>
+  </nav>
+
+  <div class="toggle_btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
 
 <script>
-(function($) {
-  var $body   = $('body');
-  var $btn   = $('.toggle_btn');
-  var open   = 'open'; // class
-  $btn.on( 'click', function() {
-    if ( ! $body.hasClass( open ) ) {
-      $body.addClass( open );
-    } else {
-      $body.removeClass( open );
-    }
-  });
-} )(jQuery);</script>
-
+  (function($) {
+    var $body = $('body');
+    var $btn = $('.toggle_btn');
+    var open = 'open'; // class
+    $btn.on('click', function() {
+      if (!$body.hasClass(open)) {
+        $body.addClass(open);
+      } else {
+        $body.removeClass(open);
+      }
+    });
+  })(jQuery);
+</script>

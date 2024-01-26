@@ -1,43 +1,42 @@
 <div>
- <h2 class="heading heading-1">マイページ</h2>
+  <h2 class="heading heading-1">マイページ</h2>
 </div>
- <div>
-  <% if @user.email != "guest@example.com" %>
-   <%= link_to "ユーザー編集", edit_user_path(current_user), class: "profile-edit-user-button" %>
-  <% end %>
- </div>
 
+<div>
+  <% if @user.email != "guest@example.com" %>
+    <%= link_to "ユーザー編集", edit_user_path(current_user), class: "profile-edit-user-button" %>
+  <% end %>
+</div>
 
 <div class="profile">
-      <dl class="profile-detail">
-        <div>
-          <dt>ユーザーネーム</dt>
-          <dd><%= current_user.name %></dd>
-        </div>
-        <div>
-          <dt>経験年数</dt>
-          <dd><%= current_user.year %></dd>
-        </div>
-        <div>
-          <dt>戦型</dt>
-          <dd><%= current_user.btype %></dd>
-        </div>
-        <div>
-          <dt>メールアドレス</dt>
-          <dd><%= current_user.addresses %></dd>
-        </div>
-        <div>
-          <dt>電話番号</dt>
-          <dd><%= current_user.telephone %></dd>
-        </div>
-        <div>
-          <dt>フォロー</dt>
-          <dd><%= link_to current_user.followings.count, user_followings_path(current_user) %></dd>
-        </div>
-        <div>
-          <dt>フォロワー</dt>
-          <dd><%= link_to current_user.followers.count, user_followers_path(current_user) %></dd>
-        </div>
-      </dl>
+  <dl class="profile-detail">
+    <div>
+      <dt>ユーザーネーム</dt>
+      <dd><%= current_user.name %></dd>
     </div>
-    
+    <div>
+      <dt>経験年数</dt>
+      <dd><%= current_user.year %></dd>
+    </div>
+    <div>
+      <dt>戦型</dt>
+      <dd><%= current_user.btype %></dd>
+    </div>
+    <div>
+      <dt>メールアドレス</dt>
+      <dd><%= current_user.addresses %></dd>
+    </div>
+    <div>
+      <dt>電話番号</dt>
+      <dd><%= current_user.telephone %></dd>
+    </div>
+    <div>
+      <dt>フォロー</dt>
+      <dd><%= link_to current_user.followings.count, user_followings_path(current_user) %></dd>
+    </div>
+    <div>
+      <dt>フォロワー</dt>
+      <dd><%= link_to current_user.followers.count, user_followers_path(current_user) %></dd>
+    </div>
+  </dl>
+</div>

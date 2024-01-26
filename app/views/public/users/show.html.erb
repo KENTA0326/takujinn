@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-5">
       <h2 class="header3"><%= @user.name %>の詳細</h2>
-     <div class="post-detail">
+      <div class="post-detail">
         <div class="d-flex mx-3">
           <dt>ユーザーネーム</dt>
           <dd><%= @user.name %></dd>
@@ -16,10 +16,6 @@
           <dt>戦型</dt>
           <dd><%= @user.btype %></dd>
         </div>
-        <!--<tr>-->
-        <!--  <td>自己紹介</td>-->
-        <!--  <td><%#= current_user.introduction %></td>-->
-        <!--</tr>-->
         <div class="d-flex mx-3">
           <dt>メールアドレス</dt>
           <dd><%= @user.addresses %></dd>
@@ -28,84 +24,92 @@
           <dt>電話番号</dt>
           <dd><%= @user.telephone %></dd>
         </div>
-       <div class="d-flex mx-3">
+        <div class="d-flex mx-3">
           <dt>フォロー</dt>
           <dd><%= link_to @user.followings.count, user_followings_path(@user) %></dd>
         </div>
-       <div class="d-flex mx-3">
+        <div class="d-flex mx-3">
           <dt>フォロワー</dt>
           <dd><%= link_to @user.followers.count, user_followers_path(@user) %></dd>
         </div>
-      <div class="d-flex">
-        <div style="margin :10px 10px;">
-          <% if current_user != @user %>
-            <%= render "public/relationships/btn", user: @user, options: { class: ""} %>
-          <% else %>
-            <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
-              <i class="fas fa-user-cog"></i>
-            <% end %>
-          <% end %>
-        </div>
-        <div style="margin :10px 10px;">
-          <% unless @user.id == current_user.id %>
-            <% if (current_user.following? @user) && (@user.following? current_user)  %>
-            <% if @isRoom == true %>
-              <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg post-edit-user-button">チャットへ</a>
+        <div class="d-flex">
+          <div style="margin: 10px 10px;">
+            <% if current_user != @user %>
+              <%= render "public/relationships/btn", user: @user, options: { class: ""} %>
             <% else %>
-              <%= form_for @room do |f| %>
-                <%= fields_for @entry do |e| %>
-                  <%= e.hidden_field :user_id, value: @user.id %>
-                <% end %>
-                <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+              <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+                <i class="fas fa-user-cog"></i>
               <% end %>
             <% end %>
+          </div>
+          <div style="margin: 10px 10px;">
+            <% unless @user.id == current_user.id %>
+              <% if (current_user.following? @user) && (@user.following? current_user)  %>
+                <% if @isRoom == true %>
+                  <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg post-edit-user-button">チャットへ</a>
+                <% else %>
+                  <%= form_for @room do |f| %>
+                    <%= fields_for @entry do |e| %>
+                      <%= e.hidden_field :user_id, value: @user.id %>
+                    <% end %>
+                    <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div>
+          <% if @user != current_user %>
+            <% if current_user.reporter.exists?(reported_id: @user.id) %>
+              <%= button_tag "通報済み", class: "btn btn-secondary", disabled: true %>
+            <% else %>
+              <%= link_to "ユーザーを通報", user_profile_reports_new_path(@user), class: "btn btn-danger" %>
             <% end %>
           <% end %>
         </div>
       </div>
-        
-    </div>
     </div>
 
     <div class="col-5">
-     <h2 class="header3">
-          <%= @user.name %>の投稿
-     </h2>
-          <!-- user no toukou ichiran  -->
-<% @user.posts.each do |post| %>
-<div class="card card-user-post">
-  <div class="card-body">
-    <h5 class="card-title">
-     <%= link_to post_path(post) do %>
-       <%= post.user.name %>
-       <% end %>
-     </h5>
-  </div>
-  <ul class="list-group-flush" style="padding-left: 0px;">
-    <li class="post-detail-group">
-     <div class="d-flex">
-      <dt class="post-detail1">打ちたい戦型</dt>
-      <dd class="post-detail2"><%= post.btype %></dd>
-     </div>
-    </li>
-    <li class="post-detail-group">
-     <div class="d-flex">
-      <dt class="post-detail1">場所</dt>
-      <dd class="post-detail2"><%= post.location %></dd>
-     </div>
-    </li>
-    <li class="post-detail-group">
-     <div class="d-flex">
-      <dt class="post-detail1">一言</dt>
-      <dd class="post-detail2"><%= post.text %></dd>
-     </div>
-    </li>
-  </ul>
-  <div class="card-body">
-   <div id='favorite_buttons_<%= post.id %>' class="text-right"><%= render "public/favorites/btn", post: post %></div>
-  </div>
-</div>
-<% end %>
+      <h2 class="header3">
+        <%= @user.name %>の投稿
+      </h2>
+      <!-- user no toukou ichiran  -->
+      <% @user.posts.each do |post| %>
+        <div class="card card-user-post">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to post_path(post) do %>
+                <%= post.user.name %>
+              <% end %>
+            </h5>
+          </div>
+          <ul class="list-group-flush" style="padding-left: 0px;">
+            <li class="post-detail-group">
+              <div class="d-flex">
+                <dt class="post-detail1">打ちたい戦型</dt>
+                <dd class="post-detail2"><%= post.btype %></dd>
+              </div>
+            </li>
+            <li class="post-detail-group">
+              <div class="d-flex">
+                <dt class="post-detail1">場所</dt>
+                <dd class="post-detail2"><%= post.location %></dd>
+              </div>
+            </li>
+            <li class="post-detail-group">
+              <div class="d-flex">
+                <dt class="post-detail1">一言</dt>
+                <dd class="post-detail2"><%= post.text %></dd>
+              </div>
+            </li>
+          </ul>
+          <div class="card-body">
+            <div id='favorite_buttons_<%= post.id %>' class="text-right"><%= render "public/favorites/btn", post: post %></div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
