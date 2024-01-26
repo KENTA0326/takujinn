@@ -1,44 +1,44 @@
 <h2 class="heading heading-1">ユーザー編集</h2>
- <div class="d-flex justify-content-center">
-      <%= form_with model: @user, url: user_path, method: :patch do |f| %>
-  <dl class="profile-detail p-5">
-     <div>
+<div class="d-flex justify-content-center">
+  <%= form_with model: @user, url: user_path, method: :patch do |f| %>
+    <dl class="profile-detail p-5">
+      <div>
         <dt>
           <%= f.label :name, "ユーザーネーム" %>
         </dt>
-       <dd>
-          <%= f.text_field :name, autofocus: true, class: "name", placeholder:"ユーザーネーム" %>
-       </dd>
-     </div>
-　　 <div>
-         <dt>
-          <%= f.label :year, "経験年数" %>
-         </dt>
         <dd>
-          <%= f.text_field :year, class: "year", placeholder:"00年" %>
+          <%= f.text_field :name, autofocus: true, class: "name", placeholder: "ユーザーネーム" %>
         </dd>
-       </div>
+      </div>
+      <div>
+        <dt>
+          <%= f.label :year, "経験年数" %>
+        </dt>
+        <dd>
+          <%= f.text_field :year, class: "year", placeholder: "00年" %>
+        </dd>
+      </div>
       <div>
         <dt>
           <%= f.label :btype, "戦型" %>
         </dt>
         <dd>
-          <%= f.text_field :btype, class: "btype", placeholder:"カットマン" %>
+          <%= f.text_field :btype, class: "btype", placeholder: "カットマン" %>
         </dd>
       </div>
-        <div>
-          <dt>
-            <%= f.label :telephone, "電話番号(ハイフンなし)" %>
-          </dt>
-          <dd>
-             <%= f.text_field :telephone, autofocus: true, class: "telephone", placeholder:"0000000000" %>
-          </dd>
-        </div>
-      </dl>
-
-      <div class="text-center">
-        <%= f.submit "更新する", class: "btn post-edit-user-button" %>
-        <%= link_to "退会する", user_users_unsubscribe_path(@user), class: "btn post-destroy-user-button" %>
+      <div>
+        <dt>
+          <%= f.label :telephone, "電話番号(ハイフンなし)" %>
+        </dt>
+        <dd>
+          <%= f.text_field :telephone, autofocus: true, class: "telephone", placeholder: "0000000000" %>
+        </dd>
       </div>
-      <% end %>
+    </dl>
+
+    <div class="text-center">
+      <%= f.submit "更新する", class: "btn post-edit-user-button" %>
+      <%= link_to "退会する", user_users_unsubscribe_path(@user), class: "btn post-destroy-user-button" %>
     </div>
+  <% end %>
+</div>

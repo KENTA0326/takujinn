@@ -1,10 +1,8 @@
 <%= search_form_for @q do |f| %>
   <div class="d-flex">
-   
-　<%= f.search_field :name_cont, class: 'name-field' %>
-    
+    <%= f.search_field :name_cont, class: 'name-field' %>
     <div>
-　<%= f.submit'ユーザー検索', class: 'btn post-search-user-button'  %>
-    </div>　
-</div>
+      <%= f.submit 'ユーザー検索', class: 'btn post-search-user-button' %>
+    </div>
+  </div>
 <% end %>

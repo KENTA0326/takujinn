@@ -1,27 +1,25 @@
-<h2 class="heading heading-1">ユーザー一覧</h2>
-
-  <% @users.each do |user| %>
+<% @users.each do |user| %>
   <div class="card card-post">
-  <div class="card-body">
-    <h5 class="card-title">
-     <%= link_to user_path(user) do %>
-       <%= user.name %>
-       <% end %>
-     </h5>
+    <div class="card-body">
+      <h5 class="card-title">
+        <%= link_to user_path(user) do %>
+          <%= user.name %>
+        <% end %>
+      </h5>
+    </div>
+    <ul class="list-group-flush" style="padding-left: 0px;">
+      <li class="post-detail-group">
+        <div class="d-flex">
+          <dt class="post-detail1">戦型</dt>
+          <dd class="post-detail2"><%= user.btype %></dd>
+        </div>
+      </li>
+      <li class="post-detail-group">
+        <div class="d-flex">
+          <dt class="post-detail1">経験年数</dt>
+          <dd class="post-detail2"><%= user.year %></dd>
+        </div>
+      </li>
+    </ul>
   </div>
-  <ul class="list-group-flush" style="padding-left: 0px;">
-    <li class="post-detail-group">
-     <div class="d-flex">
-      <dt class="post-detail1">戦型</dt>
-      <dd class="post-detail2"><%= user.btype %></dd>
-     </div>
-    </li>
-    <li class="post-detail-group">
-     <div class="d-flex">
-      <dt class="post-detail1">経験年数</dt>
-      <dd class="post-detail2"><%= user.year %></dd>
-     </div>
-    </li>
-  </ul>
-</div>
-  <% end %>
+<% end %>
