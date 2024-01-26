@@ -1,42 +1,89 @@
 <div>
   <h2 class="heading heading-1">マイページ</h2>
 </div>
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+        <div class="left-align">
+          <% if @user.email != "guest@example.com" %>
+            <%= link_to "ユーザー編集", edit_user_path(current_user), class: "profile-edit-user-button" %>
+          <% end %>
+        </div>
 
-<div>
-  <% if @user.email != "guest@example.com" %>
-    <%= link_to "ユーザー編集", edit_user_path(current_user), class: "profile-edit-user-button" %>
-  <% end %>
+        <div class="profile">
+          <dl class="profile-detail">
+            <div>
+              <dt>ユーザーネーム</dt>
+              <dd><%= current_user.name %></dd>
+            </div>
+            <div>
+              <dt>経験年数</dt>
+              <dd><%= current_user.year %></dd>
+            </div>
+            <div>
+              <dt>戦型</dt>
+              <dd><%= current_user.btype %></dd>
+            </div>
+            <div>
+              <dt>メールアドレス</dt>
+              <dd><%= current_user.addresses %></dd>
+            </div>
+            <div>
+              <dt>電話番号</dt>
+              <dd><%= current_user.telephone %></dd>
+            </div>
+            <div>
+              <dt>フォロー</dt>
+              <dd><%= link_to current_user.followings.count, user_followings_path(current_user) %></dd>
+            </div>
+            <div>
+              <dt>フォロワー</dt>
+              <dd><%= link_to current_user.followers.count, user_followers_path(current_user) %></dd>
+            </div>
+          </dl>
+        </div>
+       </div>
+
+       <div class="col-5">
+      <h2 class="header3">
+        <%= current_user.name %>の投稿
+      </h2>
+      <!-- user no toukou ichiran  -->
+      <% current_user.posts.each do |post| %>
+        <div class="card card-user-post">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to post_path(post) do %>
+                <%= post.user.name %>
+              <% end %>
+            </h5>
+          </div>
+          <ul class="list-group-flush" style="padding-left: 0px;">
+            <li class="post-detail-group">
+              <div class="d-flex">
+                <dt class="post-detail1">打ちたい戦型</dt>
+                <dd class="post-detail2"><%= post.btype %></dd>
+              </div>
+            </li>
+            <li class="post-detail-group">
+              <div class="d-flex">
+                <dt class="post-detail1">場所</dt>
+                <dd class="post-detail2"><%= post.location %></dd>
+              </div>
+            </li>
+            <li class="post-detail-group">
+              <div class="d-flex">
+                <dt class="post-detail1">一言</dt>
+                <dd class="post-detail2"><%= post.text %></dd>
+              </div>
+            </li>
+          </ul>
+          <div class="card-body">
+            <div id='favorite_buttons_<%= post.id %>' class="text-right"><%= render "public/favorites/btn", post: post %></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-<div class="profile">
-  <dl class="profile-detail">
-    <div>
-      <dt>ユーザーネーム</dt>
-      <dd><%= current_user.name %></dd>
-    </div>
-    <div>
-      <dt>経験年数</dt>
-      <dd><%= current_user.year %></dd>
-    </div>
-    <div>
-      <dt>戦型</dt>
-      <dd><%= current_user.btype %></dd>
-    </div>
-    <div>
-      <dt>メールアドレス</dt>
-      <dd><%= current_user.addresses %></dd>
-    </div>
-    <div>
-      <dt>電話番号</dt>
-      <dd><%= current_user.telephone %></dd>
-    </div>
-    <div>
-      <dt>フォロー</dt>
-      <dd><%= link_to current_user.followings.count, user_followings_path(current_user) %></dd>
-    </div>
-    <div>
-      <dt>フォロワー</dt>
-      <dd><%= link_to current_user.followers.count, user_followers_path(current_user) %></dd>
-    </div>
-  </dl>
-</div>
