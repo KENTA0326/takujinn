@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  enum user_status: { available: 0, suspended: 1 }
 
   has_many :favorites, dependent: :destroy
   has_many :posts, dependent: :destroy
@@ -15,7 +16,7 @@ class User < ApplicationRecord
   has_many :reporter, class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
   has_many :reported, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
 
-  
+
 
     # ...
   # フォローしている関連付け
@@ -29,9 +30,9 @@ class User < ApplicationRecord
 
   # フォロワーを取得
   has_many :followers, through: :passive_relationships, source: :follower
-  
-  enum status: { available: 0, suspended: 1 }
-  
+
+
+
   def self.ransackable_attributes(auth_object = nil)
         %w[name]
   end
@@ -72,7 +73,7 @@ class User < ApplicationRecord
   end
 
   def active_for_authentication?
-    super && (user_status == 0)
+    super && (user_status == "available")
   end
 
   GUEST_USER_EMAIL = "guest@example.com"
