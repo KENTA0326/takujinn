@@ -6,12 +6,11 @@ class Public::SessionsController < Devise::SessionsController
     sign_in user
     redirect_to root_path, notice: "guestuserでログインしました。"
   end
-  # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource/sign_in
   # def create
@@ -27,6 +26,6 @@ class Public::SessionsController < Devise::SessionsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
   end
 end

@@ -44,7 +44,7 @@
       </div>
     </div>
     <div class="small text-muted text-right">
-      <%= time_ago_in_words(notification.created_at).upcase %>前
+      <%= notification.created_at.in_time_zone('Tokyo').strftime('%Y-%m-%d') %>
     </div>
   </div>
 <% end %>

@@ -20,6 +20,7 @@ class Public::NotificationsController < ApplicationController
     @user = current_user
     @notices = current_user.passive_notifications.order(created_at: :desc)
     @unchecked_notifications = @notices.where(is_checked: false)
+   
 
     # 確認済みの通知を取得
     @checked_notifications = @notices.where(is_checked: true).limit(20)
@@ -34,9 +35,6 @@ class Public::NotificationsController < ApplicationController
     head :no_content
   end
 
-  # def update
-  #   notification = current_user.notifications.find(params[:id])
-  #   notification.update(read: true)
-  #   redirect_to notification.notifiable_path
-  # end
+
+  
 end

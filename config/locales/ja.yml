@@ -1,6 +1,10 @@
 ja:
+    datetime:
+      distance_in_words:
+        x_days: "%{count}日"
+
     enums:
       user: 
-        status:
+        user_status:
           available: "利用可能"
           suspended: "利用停止中"
