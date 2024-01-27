@@ -5,12 +5,14 @@ class Notification < ApplicationRecord
   belongs_to :pose_comment, optional: true
   belongs_to :favorite, optional: true
   belongs_to :relationship, optional: true
+  belongs_to :room, optional: true
+  belongs_to :message, optional: true
 
   belongs_to :visitor, class_name: "User", foreign_key: "visitor_id", optional: true
   belongs_to :visited, class_name: "User", foreign_key: "visited_id", optional: true
 
 
-  def message
+  def _message
     if notifiable_type === "Post"
       "フォローしている#{notifiable.user.name}さんが投稿しました"
     else
