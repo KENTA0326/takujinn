@@ -9,6 +9,17 @@
 
       <!-- フォロー通知の場合 -->
         <strong><%= visitor.name %></strong>さんがあなたをフォローしました
+      
+      <!-- DMが送られた通知の場合 -->
+      <% when 'dm' then %>
+      <p>あなたに</p>
+        <h5><i class="fas fa-envelope"></i>DMを送りました</h5>
+        <span>メッセージ内容:</span>
+          <%= truncate(notification.message.message, length: 20, omission: '... (一部表示)') %>
+        <%= link_to room_path(notification.room) do %>
+          <h4>DMの送信画面に移動</h4>
+        <% end %>
+        <hr>
 
       <!-- 投稿がいいねされた通知の場合 -->
       <% when 'favorite_post' then %>
