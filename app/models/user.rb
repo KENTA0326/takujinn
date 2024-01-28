@@ -10,9 +10,10 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
-  has_many :notifications, dependent: :destroy
-  has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
-  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+  # has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
+  # has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id"
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id"
   has_many :reporter, class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
   has_many :reported, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
 

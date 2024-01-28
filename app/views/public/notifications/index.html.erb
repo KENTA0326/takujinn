@@ -1,18 +1,52 @@
-<h2 class="heading heading-1">通知一覧</h2>
+<h2 class="heading heading-1">通知一覧<i class="fa-sharp fa-solid fa-bell"></i></h2>
+<div>
+ <% if @notifications.where(is_checked: true).present? %>
+ <%= link_to "通知をクリアする", destroy_all_notifications_path, method: :delete,"data-confirm" => "既読済み通知を削除しますか？", class: "ml-2 btn btn-outline-secondary btn-sm"%>
+ <% end %>
+</div>
+<div class="search_form">
+  <%#= form_with url: notification_search_path, local: true, method: :get do |f| %>
+      <%#= f.text_field :word %>
+      <%#= f.select :range, options_for_select([['新しい順'], ['古い順']]) %>
+      <%#= f.select :search, options_for_select([["全て","perfect_match"], ["既読","forward_match"],  ["未読","backward_match"]]) %>
+      <%#= f.submit "検索", class: "btn-sm btn-primary" %>
+    <%# end %>
+    <%= form_tag(notifications_path, method: :get) do %>
+      <%= select_tag(:range, options_for_select([['新しい順', 'latest'], ['古い順', 'oldest']], {selected: params[:range]})) %>
+      <%= select_tag(:option, options_for_select([['すべて', 'all'], ['未読', 'uncheck'], ['既読', 'checked']], {selected: params[:option]})) %>
+      <%= submit_tag '検索', name: nil %>
+    <% end %>
+  </div>
 
-<% notifications = @unchecked_notifications.where.not(visitor_id: current_user.id) %>
-
-<!--未確認通知を表示-->
-<% if @unchecked_notifications.any? %>
-  <%= render "notification", notifications: @unchecked_notifications %>
-<% end %>
-
- <!--確認済み通知を表示-->
-  <% if @checked_notifications.any? %>
-    <%= render "notification", notifications: @checked_notifications %>
+<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+<table class='table'>
+  <% notifications.each do |notification| %>
+    <tr class="<%= notification.is_checked ? "table_group2" : "table_group" %>">
+      <td>
+        <%= render "notification", notification: notification %>
+      </td>
+    </tr>
   <% end %>
+<!--未確認通知を表示-->
+<!--<%# if @unchecked_notifications.any? %>-->
+<!-- <tr class= "table_group">-->
+<!--   <td>-->
 
+<!--    <%#= render "notification", notifications: @unchecked_notifications %>-->
+
+<!--  </td>-->
+<!-- </tr>-->
+<!--<%# end %>-->
+<!--  <%# if @checked_notifications.any? %>-->
+<!--  <tr class= "table_group2">-->
+   <!--確認済み通知を表示-->
+<!--   <td>-->
+<!--      <%#= render "notification", notifications: @checked_notifications %>-->
+<!--   </td>-->
+<!--  </tr>-->
+<!--  <%# end %>-->
+ </table>
  <!--通知が一つもない場合の表示-->
-<% if @unchecked_notifications.empty? && @checked_notifications.empty? %>
+<% if notifications.empty? %>
   <p>通知はありません</p>
 <% end %>
