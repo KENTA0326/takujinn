@@ -8,3 +8,20 @@
  text-decoration: none;
  opacity: 0.5;
 }
+
+@keyframes moveDown {
+  0% {
+    transform: translateY(-50px); /* 初期位置から上方向に50px移動 */
+    opacity: 0; /* 初期状態では非表示 */
+  }
+  100% {
+    transform: translateY(0); /* 移動なし */
+    opacity: 1; /* 完全に表示 */
+  }
+}
+
+/* アニメーションを適用する要素に対してスタイルを設定 */
+.move-down-element {
+  color: white;
+  animation: moveDown 1s ease-in-out; /* 1秒かけて移動、イージングを指定（ease-in-outは緩急のついた動き） */
+}

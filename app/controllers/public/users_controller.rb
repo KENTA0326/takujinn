@@ -8,8 +8,8 @@ class Public::UsersController < ApplicationController
     else
     @users = User.all
     end
-  end 
-  
+  end
+
   def mypage
     @user = current_user
   end
@@ -85,7 +85,8 @@ class Public::UsersController < ApplicationController
   def withdraw
     @user = current_user
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
-    @user.update(is_active: false)
+    # @user.update(user_status: false)
+    @user.destroy
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path

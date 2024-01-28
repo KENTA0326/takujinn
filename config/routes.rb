@@ -39,7 +39,9 @@ Rails.application.routes.draw do
     end
 
     resources :notifications, only: [:index] do
-      post :update_checked, on: :collection
+      patch :checked, on: :member
+      delete :destroy_all, on: :collection
+      get "search" => "notifications#search"
     end
 
     resources :contacts, only: [:new, :create] do

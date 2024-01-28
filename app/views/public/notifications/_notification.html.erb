@@ -1,15 +1,16 @@
-<% notifications.each do |notification| %>
+<%# notifications.each do |notification| %>
   <% visitor = notification.visitor %>
   <% visited = notification.visited %>
-  <div class="col-md-12 mx-auto notification-container">
-    <div class="notification-box align-items-center">
-      <div class="box16">
+
        <p><!-- 通知の種類に応じて表示内容を切り替え -->
       <% case notification.action when 'follow' then %>
 
       <!-- フォロー通知の場合 -->
         <strong><%= visitor.name %></strong>さんがあなたをフォローしました
-      
+            <%= link_to checked_notification_path(notification), method: :PATCH do %>
+              <span class= text-success><i class="fa-solid fa-check"></i></span>
+            <% end %>
+
       <!-- DMが送られた通知の場合 -->
       <% when 'dm' then %>
       <p>あなたに</p>
@@ -20,12 +21,19 @@
           <h4>DMの送信画面に移動</h4>
         <% end %>
         <hr>
+        <%= link_to checked_notification_path(notification), method: :PATCH do %>
+         <span class= text-success><i class="fa-solid fa-check"></i></span>
+        <% end %>
 
       <!-- 投稿がいいねされた通知の場合 -->
       <% when 'favorite_post' then %>
         <%= link_to post_path(notification.post) do %>
           <strong><%= visitor.name %></strong>さんが<strong><%= truncate(notification.post.text, length: 10) %></strong>の投稿にいいねしました
         <% end %>
+        <%= link_to checked_notification_path(notification), method: :PATCH do %>
+         <span class= text-success><i class="fa-solid fa-check"></i></span>
+        <% end %>
+
 
       <!-- コメントが投稿された通知の場合 -->
       <% when 'post_comment' then %>
@@ -33,17 +41,24 @@
         <% if notification.post.user_id == visited.id %>
           <%= link_to post_path(notification.post) do %>
             <strong><%= visitor.name %></strong>さんが<strong><%= truncate(notification.post.text, length: 10) %></strong>の投稿にコメントしました
+            <%= link_to checked_notification_path(notification), method: :PATCH do %>
+             <span class= text-success><i class="fa-solid fa-check"></i></span>
+            <% end %>
             <% post_comment = PostComment.find_by(id: notification.post_comment_id) %>
             <div class="notification-comment">
               <%= truncate(post_comment&.comment, length: 30) %>
             </div>
           <% end %>
 
+
         <!-- 投稿者が異なり自身がコメントした投稿に他のユーザーがコメントした場合 -->
         <% else %>
           <span>
             <%= link_to post_path(notification.post) do %>
               <strong><%= visitor.name %></strong>さんが<strong><%= notification.post.user.name + 'さんの投稿' %></strong>にコメントしました
+              <%= link_to checked_notification_path(notification), method: :PATCH do %>
+               <span class= text-success><i class="fa-solid fa-check"></i></span>
+              <% end %>
               <% post_comment = PostComment.find_by(id: notification.post_comment_id) %>
               <div class="notification-comment">
                 <%= truncate(post_comment&.comment, length: 30) %>
@@ -52,10 +67,10 @@
           </span>
         <% end %>
       <% end %></p>
-      </div>
-    </div>
+
+
     <div class="small text-muted text-right">
       <%= notification.created_at.in_time_zone('Tokyo').strftime('%Y-%m-%d') %>
     </div>
-  </div>
-<% end %>
+
+<%# end %>
