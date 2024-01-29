@@ -4,19 +4,16 @@
  <%= link_to "通知をクリアする", destroy_all_notifications_path, method: :delete,"data-confirm" => "既読済み通知を削除しますか？", class: "ml-2 btn btn-outline-secondary btn-sm"%>
  <% end %>
 </div>
-<div class="search_form">
-  <%#= form_with url: notification_search_path, local: true, method: :get do |f| %>
-      <%#= f.text_field :word %>
-      <%#= f.select :range, options_for_select([['新しい順'], ['古い順']]) %>
-      <%#= f.select :search, options_for_select([["全て","perfect_match"], ["既読","forward_match"],  ["未読","backward_match"]]) %>
-      <%#= f.submit "検索", class: "btn-sm btn-primary" %>
-    <%# end %>
+
+
     <%= form_tag(notifications_path, method: :get) do %>
-      <%= select_tag(:range, options_for_select([['新しい順', 'latest'], ['古い順', 'oldest']], {selected: params[:range]})) %>
-      <%= select_tag(:option, options_for_select([['すべて', 'all'], ['未読', 'uncheck'], ['既読', 'checked']], {selected: params[:option]})) %>
-      <%= submit_tag '検索', name: nil %>
+        <div class="notice_search_form">
+          <%= select_tag(:range, options_for_select([['新しい順', 'latest'], ['古い順', 'oldest']], {selected: params[:range]}),{:class =>'search-range'}) %>
+          <%= select_tag(:option, options_for_select([['すべて', 'all'], ['未読', 'uncheck'], ['既読', 'checked']], {selected: params[:option]}),{:class =>'search-range'}) %>
+          <%= button_tag '検索', name: nil, class: "search-button" %>
+        </div>
     <% end %>
-  </div>
+
 
 <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
 <table class='table'>

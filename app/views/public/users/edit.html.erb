@@ -36,9 +36,13 @@
       </div>
     </dl>
 
-    <div class="text-center">
-      <%= f.submit "更新する", class: "btn post-edit-user-button" %>
-      <%= link_to "退会する", user_users_unsubscribe_path(@user), class: "btn post-destroy-user-button" %>
+    <div class="post-edit-button1">
+      <div style="margin: 10px 10px;">
+      <%= f.button "更新する", class: "post-edit-user-button" %>
+      </div>
+      <div style="margin: 10px 10px;">
+      <%= link_to "退会する", user_users_unsubscribe_path(@user), class: "post-destroy-user-button" %>
+      </div>
     </div>
   <% end %>
 </div>

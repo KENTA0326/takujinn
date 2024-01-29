@@ -3,7 +3,8 @@
 @import 'logo';
 @import 'profile';
 @import 'post';
-
+@import 'notification';
+@import 'contact';
 /*============
 hanbarger
 =============*/
@@ -227,7 +228,7 @@ body
 body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
-  
+
 }
 
 .toppage {
@@ -241,4 +242,8 @@ body {
 .table_group2 {
   background-color: #FFFFEE;
   opacity: 0.6
+}
+
+.contact-button{
+  text-align:right;
 }
