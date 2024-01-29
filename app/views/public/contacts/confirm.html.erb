@@ -1,36 +1,34 @@
+<h2 class="heading heading-1">お問い合わせ確認画面</h2>
 <div class="container p-5">
   <div class="row">
     <div class="col-md-10 offset-md-1">
+      <div class="post-detail">
+        <div class="d-flex mx-3">
+          <dt>お名前</dt>
+          <dd><%= @contact.name %></dd>
+        </div>
+        <div class="d-flex mx-3">
+          <dt>メールアドレス</dt>
+          <dd><%= @contact.email %></dd>
+        </div>
+        <div class="d-flex mx-3">
+          <dt>件名</dt>
+          <dd><%= @contact.subject %></dd>
+        </div>
+        <div class="d-flex mx-3">
+          <dt>メッセージ</dt>
+          <dd><%= @contact.message %></dd>
+        </div>
+      </div>
 
-      <table class="table">
-        <tbody>
-          <tr>
-            <td class="text-right" style="width: 30%;">お名前</td>
-            <td><%= @contact.name %></td>
-          </tr>
-          <tr>
-            <td class="text-right mt-3" style="width: 30%;">メールアドレス</td>
-            <td><%= @contact.email %></td>
-          </tr>
-          <tr>
-            <td class="text-right mt-3" style="width: 30%;">件名</td>
-            <td><%= @contact.subject %></td>
-          </tr>
-          <tr>
-            <td class="text-right mt-3">メッセージ</td>
-            <td style="white-space: pre-wrap;"><%= @contact.message %></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="d-flex">
+      <div class="d-flex" style="center-block">
         <div class="mr-3">
         <%= form_with model: @contact do |f| %>
           <%= f.hidden_field :name %>
           <%= f.hidden_field :email %>
           <%= f.hidden_field :subject %>
           <%= f.hidden_field :message %>
-          <div><%= f.submit '送信', class: "btn btn-success" %></div>
+          <div><%= f.button '送信', class: "post-edit-user-button" %></div>
         <% end %>
         </div>
 
@@ -40,7 +38,7 @@
           <%= f.hidden_field :email %>
           <%= f.hidden_field :subject %>
           <%= f.hidden_field :message %>
-          <div><%= f.submit '入力画面に戻る', class: "btn btn-info" %></div>
+          <div><%= f.button '入力画面に戻る', class: "contact-edit-user-button" %></div>
         <% end %>
         </div>
       </div>

@@ -2,7 +2,7 @@
 <div class="container-fluid light-blue-container p-5">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-    
+
     <div class="mb-2">
       <%= flash[:alert] %>
     </div>
@@ -28,8 +28,8 @@
           <%= f.text_area :message, size: '10x10', class: 'form-control' %>
         </div>
 
-        <div>
-          <%= f.submit '入力内容確認', class: "btn btn-outline-info bg-white" %>
+        <div class="contact-button">
+          <%= f.button '入力内容確認', class: "post-edit-user-button" %>
         </div>
       <% end %>
 

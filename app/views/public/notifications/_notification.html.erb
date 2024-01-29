@@ -13,14 +13,9 @@
 
       <!-- DMが送られた通知の場合 -->
       <% when 'dm' then %>
-      <p>あなたに</p>
-        <h5><i class="fas fa-envelope"></i>DMを送りました</h5>
-        <span>メッセージ内容:</span>
-          <%= truncate(notification.message.message, length: 20, omission: '... (一部表示)') %>
         <%= link_to room_path(notification.room) do %>
-          <h4>DMの送信画面に移動</h4>
+        <strong>あなたに</strong><i class="fas fa-envelope"></i>DMを送りました
         <% end %>
-        <hr>
         <%= link_to checked_notification_path(notification), method: :PATCH do %>
          <span class= text-success><i class="fa-solid fa-check"></i></span>
         <% end %>
