@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   validates :user_id, presence: true
   belongs_to :user
   has_many :favorites, dependent: :destroy
-  has_many :notifications, as: :notifiable, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_one_attached :image
 
