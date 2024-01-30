@@ -160,7 +160,7 @@ ActiveRecord::Schema.define(version: 2024_01_27_121221) do
     t.integer "year"
     t.string "btype"
     t.text "addresses"
-    t.integer "telephone"
+    t.string "telephone"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
