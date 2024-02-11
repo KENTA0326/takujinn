@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_search
 
   def index
@@ -25,8 +26,8 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @post_comments = PostComment.all
-  end 
-  
+  end
+
   def set_search
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).order(created_at: :desc)
