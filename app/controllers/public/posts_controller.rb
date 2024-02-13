@@ -18,8 +18,12 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to '/posts'
+    if @post.save
+      flash[:success] = '投稿が完了しました。'
+      redirect_to '/posts'
+    else
+      render :new
+    end
   end
 
   def show

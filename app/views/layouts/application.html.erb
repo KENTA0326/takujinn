@@ -18,6 +18,9 @@
       </header>
       <main class="flex-shrink-0 bg-powderblue">
         <div class="pb-5">
+          <% flash.each do |message_type, message| %>
+           <div class="flash-message <%= message_type %>"><%= message %></div>
+          <% end %>
           <%= yield %>
         </div>
       </main>

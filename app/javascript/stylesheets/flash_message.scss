@@ -1,0 +1,48 @@
+.flash-message {
+  animation: hidden 5s forwards;
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+  transform: translateY(100%);
+  opacity: 0;
+  width: 100%;
+
+  @keyframes hidden {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    10% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    90% {
+      transform: translateY(0);
+      opacity: 1
+    }
+    100% {
+      display: none;
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+}
+
+.flash-message.notice {
+  background-color: #0000FF;
+  color: white;
+  border: solid 1px #0067C0;
+}
+
+.flash-message.alert {
+  background-color: #ffd4d1;
+  color: white;
+  border: solid 1px #930403;
+}
+
+.flash-message.success {
+  background-color: #2dd787;
+  color: white;
+  border: solid 1px #930403;
+}
+
