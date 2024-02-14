@@ -87,4 +87,11 @@ class User < ApplicationRecord
   def guest_user?
     email == GUEST_USER_EMAIL
   end
+
+  validates :name, presence: true
+  validates :telephone, presence: true, length: { in: 10..11 }
+  validates :email, presence: true
+  validates :btype, presence: true
+  validates :addresses, presence: true
+  validates :year, presence: true
 end

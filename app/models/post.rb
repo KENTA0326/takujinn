@@ -70,4 +70,9 @@ class Post < ApplicationRecord
     # 通知を保存（バリデーションが成功する場合のみ）
     notification.save if notification.valid?
   end
+
+  validates :text, presence: true
+  validates :location, presence: true
+  validates :btype, presence: true
+
 end
