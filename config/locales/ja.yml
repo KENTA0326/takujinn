@@ -1,10 +1,30 @@
 ja:
+    activerecord:
+      errors:
+        models:
+          user:
+            attributes:
+              email:
+                blank: "メールアドレスを入力してください"
+              password:
+                blank: "パスワードを入力してください"
+              name:
+                blank: "名前を入力してください"
+              telephone:
+                blank: "電話番号を入力してください"
+                too_short: "電話番号は10桁以上で入力してください"
+              btype:
+                blank: "血液型を選択してください"
+              addresses:
+                blank: "住所を入力してください"
+              year:
+                blank: "年を入力してください"
     datetime:
       distance_in_words:
         x_days: "%{count}日"
 
     enums:
-      user: 
+      user:
         user_status:
           available: "利用可能"
           suspended: "利用停止中"
