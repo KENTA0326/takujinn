@@ -30,6 +30,25 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @post_comments = PostComment.all
+  end 
+  
+  def edit
+    @post = Post.find(params[:id])
+  end 
+  
+  def update
+    if @post.update(post_params)
+      flash[:notice]="投稿情報を更新しました"
+      redirect_to posts_path(@post)
+    else 
+      render :edit
+    end 
+  end 
+   
+  def destory
+    @post.destory(post_params)
+    flash[:notice]="投稿を削除しました"
+    redirect_to posts_path
   end
 
   def set_search
