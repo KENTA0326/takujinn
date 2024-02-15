@@ -4,8 +4,6 @@
  <%= link_to "通知をクリアする", destroy_all_notifications_path, method: :delete,"data-confirm" => "既読済み通知を削除しますか？", class: "ml-2 btn btn-outline-secondary btn-sm"%>
  <% end %>
 </div>
-
-
     <%= form_tag(notifications_path, method: :get) do %>
         <div class="notice_search_form">
           <%= select_tag(:range, options_for_select([['新しい順', 'latest'], ['古い順', 'oldest']], {selected: params[:range]}),{:class =>'search-range'}) %>
@@ -24,24 +22,6 @@
       </td>
     </tr>
   <% end %>
-<!--未確認通知を表示-->
-<!--<%# if @unchecked_notifications.any? %>-->
-<!-- <tr class= "table_group">-->
-<!--   <td>-->
-
-<!--    <%#= render "notification", notifications: @unchecked_notifications %>-->
-
-<!--  </td>-->
-<!-- </tr>-->
-<!--<%# end %>-->
-<!--  <%# if @checked_notifications.any? %>-->
-<!--  <tr class= "table_group2">-->
-   <!--確認済み通知を表示-->
-<!--   <td>-->
-<!--      <%#= render "notification", notifications: @checked_notifications %>-->
-<!--   </td>-->
-<!--  </tr>-->
-<!--  <%# end %>-->
  </table>
  <!--通知が一つもない場合の表示-->
 <% if notifications.empty? %>
