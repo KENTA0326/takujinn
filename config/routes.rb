@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    resources :posts, only: [:index, :show, :create, :new, :destroy] do
+    resources :posts, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       collection do
         get 'search'
       end

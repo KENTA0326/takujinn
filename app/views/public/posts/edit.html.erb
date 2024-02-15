@@ -1,0 +1,41 @@
+<h2 class="heading heading-1">投稿編集</h2>
+ <%= render "layouts/error_messages", obj: @post %>
+
+ <div class="d-flex justify-content-center p-5">
+   <%= form_with model: @post, url: post_path(@post),method: :patch do |f| %>
+   <dl class="profile-detail">
+     <div>
+       <dt>
+         <%= f.label :btype, "打ちたい戦型" %>
+       </dt>
+       <dd>
+         <%= f.text_field :btype, autofocus:true, class: "btype" %>
+       </dd>
+     </div>
+      <div>
+         <dt>
+           <%= f.label :location, "場所" %>
+         </dt>
+        <dd>
+          <%= f.text_field :location, class: "location" %>
+        </dd>
+       </div>
+      <div>
+        <dt>
+          <%= f.label :text, "一言" %>
+        </dt>
+        <dd>
+           <%= f.text_field :text, class: "text" %>
+        </dd>
+      </div>
+   </dl>
+   <div class="post-edit-button1">
+      <div style="margin: 10px 10px;">
+      <%= f.button "更新する", class: "post-edit-user-button" %>
+      </div>
+      <div style="margin: 10px 10px;">
+      <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "post-destroy-user-button" %>
+      </div>
+  <% end %>
+ </div>
+
