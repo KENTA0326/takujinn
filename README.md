@@ -23,6 +23,9 @@
 ​
 ## 設計書
 * <a href="https://docs.google.com/spreadsheets/d/1golkt9XA_Ad8B9BfbBAQXFs9vyZof51AqOSRMYPQUh0/edit?usp=sharing" target="_blank">実装機能リスト</a>
+* <a href="https://docs.google.com/spreadsheets/d/18Mg0Qno9-pDepdp8CX9OBjffJxWeeETU/edit?usp=sharing&ouid=107232230348534391082&rtpof=true&sd=true" target="_blank">テーブル定義書</a>
+* <a href="https://docs.google.com/spreadsheets/d/1qcJeMZk4SczILnO6TQQ5e3dztwyG_0SOoTQjlRPpQn0/edit?usp=sharing" target="_blank">アプリケーション詳細設計</a>
+​
 ​
 ## 開発環境
 - OS：Linux(CentOS)
