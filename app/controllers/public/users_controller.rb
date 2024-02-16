@@ -75,7 +75,7 @@ class Public::UsersController < ApplicationController
       redirect_to users_path
     else
       flash.now[:alert] = "変更に失敗しました。"
-      render edit_user_path(current_user)
+      render :edit
     end
   end
 

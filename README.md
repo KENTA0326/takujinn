@@ -22,7 +22,7 @@
 * 特殊な戦型の対策をしたい時
 ​
 ## 設計書
-後ほど作成予定
+* <a href="https://docs.google.com/spreadsheets/d/1golkt9XA_Ad8B9BfbBAQXFs9vyZof51AqOSRMYPQUh0/edit?usp=sharing" target="_blank">実装機能リスト</a>
 ​
 ## 開発環境
 - OS：Linux(CentOS)
