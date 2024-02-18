@@ -99,7 +99,7 @@
             <li class="post-detail-group">
               <div class="d-flex">
                 <dt class="post-detail1">一言</dt>
-                <dd class="post-detail2"><%= post.text %></dd>
+                <dd class="post-detail2"><%= truncate(post.text, length: 8) %></dd>
               </div>
             </li>
           </ul>
