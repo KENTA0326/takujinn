@@ -1,4 +1,7 @@
 # 卓人検索
+![](https://storage.googleapis.com/zenn-user-upload/1b83e5e5e015-20240325.png)
+
+サイトURL：http://18.183.66.131
 ​
 ## サイト概要
 ### サイトテーマ
